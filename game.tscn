@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cfb4m53jrc1sb"]
+[gd_scene load_steps=3 format=3 uid="uid://cfb4m53jrc1sb"]
 
 [ext_resource type="PackedScene" uid="uid://bmgqwgwen0pge" path="res://goku.tscn" id="1_2as26"]
+[ext_resource type="Script" path="res://addons/format_on_save/format_on_save.gd" id="1_kyvvi"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_kyvvi")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1

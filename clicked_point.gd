@@ -5,20 +5,19 @@ var click_position = Vector2(0,0)
 
 func _ready():
 	click_position = Vector2(position.x, position.y)
+	%MuzzleFlash.hide()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if Input.is_action_just_pressed("left_click"):
-		print("DOWN")
 		is_click_held = true
 		click_position = get_global_mouse_position()
 		global_position = click_position
-		#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		%MuzzleFlash.show()
 	elif Input.is_action_just_released("left_click"):
-		print("UP")
 		is_click_held = false
 		%MuzzleFlash.hide()
-		#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 	if is_click_held:
 		var distance_to_held_position = calculate_distance(click_position, get_global_mouse_position())
