@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfb4m53jrc1sb"]
+
+[ext_resource type="PackedScene" uid="uid://bmgqwgwen0pge" path="res://goku.tscn" id="1_2as26"]
+
+[node name="Game" type="Node2D"]
+y_sort_enabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1935.0
+offset_bottom = 1101.0
+color = Color(0.207843, 0.501961, 0.580392, 1)
+
+[node name="Goku" parent="." instance=ExtResource("1_2as26")]
+position = Vector2(856, 624)
