@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://e1klmqxaya11"]
+
+[ext_resource type="Texture2D" uid="uid://caqfk2xng5v5u" path="res://trees/pine_tree.png" id="1_8328d"]
+[ext_resource type="Script" path="res://click_arrow.gd" id="1_ju585"]
+
+[node name="ClickArrow" type="Node2D"]
+script = ExtResource("1_ju585")
+
+[node name="PivotPoint" type="Marker2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="PivotPoint"]
+position = Vector2(116, 0)
+rotation = 1.5708
+texture = ExtResource("1_8328d")
