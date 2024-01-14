@@ -1,6 +1,38 @@
-[gd_scene load_steps=2 format=3 uid="uid://x1c878xjrk46"]
+[gd_scene load_steps=9 format=3 uid="uid://x1c878xjrk46"]
 
 [ext_resource type="Script" path="res://Beam.gd" id="1_2jo6e"]
+[ext_resource type="Texture2D" uid="uid://xxhd81rvj2de" path="res://glowing_circle.png" id="2_ri7or"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4558"]
+size = Vector2(288, 34)
+
+[sub_resource type="Curve" id="Curve_wygec"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.544944, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_ovhq1"]
+offsets = PackedFloat32Array(0, 0.593333, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fdtb7"]
+load_path = "res://.godot/imported/glowing_circle.png-81cb6beb0518ebd499cd00c85e2583ee.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dnv7t"]
+load_path = "res://.godot/imported/glowing_circle.png-81cb6beb0518ebd499cd00c85e2583ee.ctex"
+
+[sub_resource type="Environment" id="Environment_gtot5"]
+background_mode = 3
+glow_enabled = true
+glow_levels/1 = 6.47
+glow_levels/2 = 2.0
+glow_levels/3 = 0.0
+glow_levels/5 = 0.0
+glow_strength = 1.45
+glow_blend_mode = 0
+glow_hdr_threshold = 0.62
+glow_hdr_scale = 0.52
+glow_hdr_luminance_cap = 0.85
+glow_map_strength = 0.85
 
 [node name="Beam" type="RayCast2D"]
 position = Vector2(137, 151)
@@ -11,3 +43,54 @@ script = ExtResource("1_2jo6e")
 [node name="Line2D" type="Line2D" parent="."]
 unique_name_in_owner = true
 points = PackedVector2Array(2.08165e-12, 2.08165e-12, 2.08165e-12, 100)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-0.999084, 948)
+shape = SubResource("RectangleShape2D_s4558")
+
+[node name="CastingParticles2D" type="CPUParticles2D" parent="."]
+unique_name_in_owner = true
+emitting = false
+lifetime = 0.3
+local_coords = true
+texture = ExtResource("2_ri7or")
+direction = Vector2(2.08165e-12, 1)
+gravity = Vector2(2.08165e-12, 2.08165e-12)
+initial_velocity_min = 120.0
+initial_velocity_max = 120.0
+tangential_accel_min = 100.0
+tangential_accel_max = 100.0
+scale_amount_curve = SubResource("Curve_wygec")
+color_ramp = SubResource("Gradient_ovhq1")
+
+[node name="CollisionParticles2D" type="CPUParticles2D" parent="."]
+unique_name_in_owner = true
+emitting = false
+lifetime = 0.3
+local_coords = true
+texture = SubResource("CompressedTexture2D_fdtb7")
+direction = Vector2(2.08165e-12, 1)
+gravity = Vector2(2.08165e-12, 2.08165e-12)
+initial_velocity_min = 250.0
+initial_velocity_max = 250.0
+scale_amount_curve = SubResource("Curve_wygec")
+color_ramp = SubResource("Gradient_ovhq1")
+
+[node name="BeamParticles2D" type="CPUParticles2D" parent="."]
+unique_name_in_owner = true
+emitting = false
+lifetime = 0.3
+texture = SubResource("CompressedTexture2D_dnv7t")
+emission_shape = 3
+emission_rect_extents = Vector2(1, 1)
+direction = Vector2(2.08165e-12, 1)
+gravity = Vector2(2.08165e-12, 2.08165e-12)
+initial_velocity_min = 250.0
+initial_velocity_max = 250.0
+scale_amount_curve = SubResource("Curve_wygec")
+color_ramp = SubResource("Gradient_ovhq1")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gtot5")
