@@ -85,6 +85,7 @@ scale_amount_curve = SubResource("Curve_wygec")
 color_ramp = SubResource("Gradient_ovhq1")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 unique_name_in_owner = true

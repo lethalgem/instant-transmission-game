@@ -7,6 +7,7 @@
 radius = 54.0
 
 [node name="bardock" type="CharacterBody2D"]
+collision_layer = 3
 script = ExtResource("1_mkrw1")
 
 [node name="Slime" parent="." instance=ExtResource("1_fxydc")]
@@ -23,7 +24,5 @@ unique_name_in_owner = true
 [node name="TeleportTimer" type="Timer" parent="."]
 wait_time = 1.5
 autostart = true
-
-[node name="TeleportCalc2D" type="CollisionShape2D" parent="."]
 
 [connection signal="timeout" from="TeleportTimer" to="." method="_on_teleport_timer_timeout"]

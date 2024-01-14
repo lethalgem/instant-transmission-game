@@ -17,9 +17,10 @@ script = ExtResource("1_nxmce")
 
 [node name="HappyBoo" parent="." instance=ExtResource("1_2agf0")]
 unique_name_in_owner = true
+position = Vector2(0, 38)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -40)
+position = Vector2(0, -2)
 shape = SubResource("CapsuleShape2D_5fjsa")
 
 [node name="ClickedPoint" parent="." instance=ExtResource("3_fm6qu")]
@@ -27,13 +28,14 @@ unique_name_in_owner = true
 
 [node name="Beam" parent="." instance=ExtResource("4_icp4f")]
 unique_name_in_owner = true
-position = Vector2(51, -39)
+position = Vector2(51, -1)
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
 one_shot = true
 
 [node name="TeleportPreventionArea" type="Area2D" parent="."]
+position = Vector2(0, 38)
 
 [node name="TeleportPreventionCollision2D" type="CollisionShape2D" parent="TeleportPreventionArea"]
 unique_name_in_owner = true
