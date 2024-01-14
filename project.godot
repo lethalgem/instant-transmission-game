@@ -124,3 +124,7 @@ left_click={
 [layer_names]
 
 3d_physics/layer_2="player"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"

@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://cexv7k8xg1q6i"]
+
+[ext_resource type="PackedScene" uid="uid://ogik4s70pgwl" path="res://characters/slime/slime.tscn" id="1_fxydc"]
+[ext_resource type="Script" path="res://bardock.gd" id="1_mkrw1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dui8v"]
+radius = 54.0
+
+[node name="bardock" type="CharacterBody2D"]
+script = ExtResource("1_mkrw1")
+
+[node name="Slime" parent="." instance=ExtResource("1_fxydc")]
+unique_name_in_owner = true
+position = Vector2(1, -5)
+
+[node name="BodyCollision2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -33)
+shape = SubResource("CircleShape2D_dui8v")
+
+[node name="AttackTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="TeleportTimer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[node name="TeleportCalc2D" type="CollisionShape2D" parent="."]
+
+[connection signal="timeout" from="TeleportTimer" to="." method="_on_teleport_timer_timeout"]

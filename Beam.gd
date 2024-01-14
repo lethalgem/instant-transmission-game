@@ -4,7 +4,6 @@ var cast_point = Vector2(0, 0)
 
 var is_casting = false:
 	set(new_value):
-		print("setting is casting to {a}".format({"a": new_value}))
 		%BeamParticles2D.emitting = new_value
 		%CastingParticles2D.emitting = new_value
 
@@ -20,14 +19,8 @@ var is_casting = false:
 
 
 func _ready():
-	print("ready")
 	set_physics_process(false)
 	%Line2D.points[1] = Vector2.ZERO
-
-
-func _unhandled_input(event):
-	if event is InputEventMouseButton:
-		self.is_casting = event.pressed
 
 
 func _physics_process(_delta):
@@ -41,14 +34,12 @@ func _physics_process(_delta):
 		%CollisionParticles2D.global_rotation = get_collision_normal().angle() - 90
 		%CollisionParticles2D.position = cast_point
 
-	print(cast_point)
 	%Line2D.points[1] = cast_point
 	%BeamParticles2D.position = cast_point * 0.5
 	%BeamParticles2D.emission_rect_extents.y = cast_point.length() * 0.5
 
 
 func appear():
-	print("Appearing")
 	const RANGE = 2000
 	const TIME_TO_FULL_RANGE = 0.2
 	const WIDTH = 10
@@ -58,8 +49,11 @@ func appear():
 
 
 func disappear():
-	print("Disappearing")
 	const TIME_TO_DISAPPEAR = 0.1
 	var tween = create_tween().set_parallel(true)
 	tween.tween_property(%Line2D, "width", 0, TIME_TO_DISAPPEAR)
 	tween.tween_property(self, "cast_point", Vector2(0, 0), TIME_TO_DISAPPEAR)
+
+
+func _on_timer_timeout():
+	is_casting = false

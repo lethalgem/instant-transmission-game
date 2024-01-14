@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmgqwgwen0pge"]
+[gd_scene load_steps=7 format=3 uid="uid://bmgqwgwen0pge"]
 
 [ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://characters/happy_boo/happy_boo.tscn" id="1_2agf0"]
 [ext_resource type="Script" path="res://goku.gd" id="1_nxmce"]
@@ -8,6 +8,9 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5fjsa"]
 radius = 39.0
 height = 124.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m5me8"]
+size = Vector2(422, 356)
 
 [node name="Goku" type="CharacterBody2D"]
 script = ExtResource("1_nxmce")
@@ -23,6 +26,20 @@ shape = SubResource("CapsuleShape2D_5fjsa")
 unique_name_in_owner = true
 
 [node name="Beam" parent="." instance=ExtResource("4_icp4f")]
+unique_name_in_owner = true
 position = Vector2(51, -39)
 
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="TeleportPreventionArea" type="Area2D" parent="."]
+
+[node name="TeleportPreventionCollision2D" type="CollisionShape2D" parent="TeleportPreventionArea"]
+unique_name_in_owner = true
+position = Vector2(0, -24)
+shape = SubResource("RectangleShape2D_m5me8")
+
 [connection signal="click_released" from="ClickedPoint" to="." method="_on_clicked_point_click_released"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="Beam" method="_on_timer_timeout"]

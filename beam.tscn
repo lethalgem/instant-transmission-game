@@ -29,6 +29,7 @@ script = ExtResource("1_2jo6e")
 [node name="Line2D" type="Line2D" parent="."]
 unique_name_in_owner = true
 points = PackedVector2Array(2.08165e-12, 2.08165e-12, 2.08165e-12, 100)
+default_color = Color(0, 0.54902, 0.890196, 1)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -44,11 +45,10 @@ lifetime = 0.3
 local_coords = true
 texture = ExtResource("2_ri7or")
 direction = Vector2(2.08165e-12, 1)
+spread = 90.0
 gravity = Vector2(2.08165e-12, 2.08165e-12)
-initial_velocity_min = 120.0
-initial_velocity_max = 120.0
-tangential_accel_min = 100.0
-tangential_accel_max = 100.0
+initial_velocity_min = 200.0
+initial_velocity_max = 250.0
 scale_amount_curve = SubResource("Curve_wygec")
 color_ramp = SubResource("Gradient_ovhq1")
 
@@ -76,5 +76,7 @@ direction = Vector2(2.08165e-12, 1)
 gravity = Vector2(2.08165e-12, 2.08165e-12)
 initial_velocity_min = 250.0
 initial_velocity_max = 250.0
+tangential_accel_min = 100.0
+tangential_accel_max = 100.0
 scale_amount_curve = SubResource("Curve_wygec")
 color_ramp = SubResource("Gradient_ovhq1")

@@ -1,17 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://cfb4m53jrc1sb"]
+[gd_scene load_steps=3 format=3 uid="uid://cfb4m53jrc1sb"]
 
 [ext_resource type="PackedScene" uid="uid://bmgqwgwen0pge" path="res://goku.tscn" id="1_2as26"]
+[ext_resource type="PackedScene" uid="uid://cexv7k8xg1q6i" path="res://bardock.tscn" id="2_jlj55"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Background" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="Background"]
 offset_right = 1935.0
 offset_bottom = 1101.0
 color = Color(0.207843, 0.501961, 0.580392, 1)
 
 [node name="Goku" parent="." instance=ExtResource("1_2as26")]
-position = Vector2(856, 624)
+position = Vector2(712, 560)
+
+[node name="bardock" parent="." instance=ExtResource("2_jlj55")]
