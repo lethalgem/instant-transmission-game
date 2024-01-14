@@ -1,6 +1,12 @@
 extends RayCast2D
 
+# Enable to test
+#func _unhandled_input(event):
+#if event is InputEventMouseButton:
+#is_casting = event.pressed
+
 var cast_point = Vector2(0, 0)
+var width = 0
 
 var is_casting = false:
 	set(new_value):
@@ -12,14 +18,13 @@ var is_casting = false:
 		else:
 			%CollisionParticles2D.emitting = false
 			disappear()
-		set_physics_process(new_value)
+
 		is_casting = new_value
 	get:
 		return is_casting
 
 
 func _ready():
-	set_physics_process(false)
 	%Line2D.points[1] = Vector2.ZERO
 
 
@@ -35,6 +40,9 @@ func _physics_process(_delta):
 		%CollisionParticles2D.position = cast_point
 
 	%Line2D.points[1] = cast_point
+	%Line2D.width = width
+	%CollisionShape2D.shape.size = Vector2(width, cast_point.y)
+	%CollisionShape2D.position = Vector2(%CollisionShape2D.position.x, cast_point.y / 2)
 	%BeamParticles2D.position = cast_point * 0.5
 	%BeamParticles2D.emission_rect_extents.y = cast_point.length() * 0.5
 
@@ -42,18 +50,24 @@ func _physics_process(_delta):
 func appear():
 	const RANGE = 2000
 	const TIME_TO_FULL_RANGE = 0.2
-	const WIDTH = 10
+	const WIDTH = 40
 	var tween = create_tween().set_parallel(true)
-	tween.tween_property(%Line2D, "width", WIDTH, TIME_TO_FULL_RANGE)
+	tween.tween_property(self, "width", WIDTH, TIME_TO_FULL_RANGE)
 	tween.tween_property(self, "cast_point", Vector2(0, RANGE), TIME_TO_FULL_RANGE)
 
 
 func disappear():
 	const TIME_TO_DISAPPEAR = 0.1
 	var tween = create_tween().set_parallel(true)
-	tween.tween_property(%Line2D, "width", 0, TIME_TO_DISAPPEAR)
+	tween.tween_property(self, "width", 0, TIME_TO_DISAPPEAR)
 	tween.tween_property(self, "cast_point", Vector2(0, 0), TIME_TO_DISAPPEAR)
 
 
 func _on_timer_timeout():
 	is_casting = false
+
+
+func _on_area_2d_body_entered(body):
+	print("entered body")
+	if body.has_method("take_damage"):
+		body.take_damage()
