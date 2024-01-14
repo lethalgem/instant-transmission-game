@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmgqwgwen0pge"]
+[gd_scene load_steps=6 format=3 uid="uid://bmgqwgwen0pge"]
 
 [ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://characters/happy_boo/happy_boo.tscn" id="1_2agf0"]
 [ext_resource type="Script" path="res://goku.gd" id="1_nxmce"]
 [ext_resource type="PackedScene" uid="uid://bvqcmxwqanmwg" path="res://clicked_point.tscn" id="3_fm6qu"]
+[ext_resource type="PackedScene" uid="uid://x1c878xjrk46" path="res://beam.tscn" id="4_icp4f"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5fjsa"]
 radius = 39.0
@@ -20,5 +21,8 @@ shape = SubResource("CapsuleShape2D_5fjsa")
 
 [node name="ClickedPoint" parent="." instance=ExtResource("3_fm6qu")]
 unique_name_in_owner = true
+
+[node name="Beam" parent="." instance=ExtResource("4_icp4f")]
+position = Vector2(51, -39)
 
 [connection signal="click_released" from="ClickedPoint" to="." method="_on_clicked_point_click_released"]

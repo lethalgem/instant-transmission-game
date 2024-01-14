@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://x1c878xjrk46"]
+[gd_scene load_steps=8 format=3 uid="uid://x1c878xjrk46"]
 
 [ext_resource type="Script" path="res://Beam.gd" id="1_2jo6e"]
 [ext_resource type="Texture2D" uid="uid://xxhd81rvj2de" path="res://glowing_circle.png" id="2_ri7or"]
@@ -20,20 +20,6 @@ load_path = "res://.godot/imported/glowing_circle.png-81cb6beb0518ebd499cd00c85e
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dnv7t"]
 load_path = "res://.godot/imported/glowing_circle.png-81cb6beb0518ebd499cd00c85e2583ee.ctex"
 
-[sub_resource type="Environment" id="Environment_gtot5"]
-background_mode = 3
-glow_enabled = true
-glow_levels/1 = 6.47
-glow_levels/2 = 2.0
-glow_levels/3 = 0.0
-glow_levels/5 = 0.0
-glow_strength = 1.45
-glow_blend_mode = 0
-glow_hdr_threshold = 0.62
-glow_hdr_scale = 0.52
-glow_hdr_luminance_cap = 0.85
-glow_map_strength = 0.85
-
 [node name="Beam" type="RayCast2D"]
 position = Vector2(137, 151)
 rotation = 4.71239
@@ -46,9 +32,10 @@ points = PackedVector2Array(2.08165e-12, 2.08165e-12, 2.08165e-12, 100)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="TestCollisionWall" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-0.999084, 948)
 shape = SubResource("RectangleShape2D_s4558")
+disabled = true
 
 [node name="CastingParticles2D" type="CPUParticles2D" parent="."]
 unique_name_in_owner = true
@@ -91,6 +78,3 @@ initial_velocity_min = 250.0
 initial_velocity_max = 250.0
 scale_amount_curve = SubResource("Curve_wygec")
 color_ramp = SubResource("Gradient_ovhq1")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_gtot5")
