@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var health = 1
 
+@onready var player = get_node("/root/Game/Goku")
 @onready var teleport_prevention_area = get_node(
 	"/root/Game/Goku/TeleportPreventionArea/TeleportPreventionCollision2D"
 )
@@ -9,6 +10,8 @@ var health = 1
 
 func _ready():
 	%Slime.play_walk()
+	if player == null:
+		player = %TestTargetCollisionShape2D
 
 
 func take_damage():
@@ -26,10 +29,13 @@ func take_damage():
 
 func teleport():
 	global_position = calc_random_position()
+	look_at(player.global_position)
+	flip_character_if_needed()
 
 
 func _on_teleport_timer_timeout():
 	teleport()
+	%DelayUntilAttackTimer.start()
 
 
 func calc_random_position() -> Vector2:
@@ -38,7 +44,7 @@ func calc_random_position() -> Vector2:
 	)
 
 	var has_not_found_appropriate_position = true
-	while has_not_found_appropriate_position:
+	while has_not_found_appropriate_position and teleport_prevention_area != null:
 		var prevention_zone = Rect2(
 			teleport_prevention_area.global_position, teleport_prevention_area.shape.size
 		)
@@ -50,3 +56,28 @@ func calc_random_position() -> Vector2:
 		else:
 			has_not_found_appropriate_position = false
 	return new_position
+
+
+func flip_character_if_needed():
+	if (
+		(global_rotation_degrees > 90 and global_rotation_degrees < 270)
+		or (global_rotation_degrees < -90 and global_rotation_degrees > -270)
+	):
+		scale.y = -1
+	else:
+		scale.y = 1
+
+
+func attack():
+	%TeleportTimer.set_paused(true)
+	%Beam.is_casting = true
+	%AttackTimer.start()
+
+
+func _on_attack_timer_timeout():
+	%Beam.is_casting = false
+	%TeleportTimer.set_paused(false)
+
+
+func _on_delay_until_attack_timer_timeout():
+	attack()

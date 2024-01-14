@@ -18,3 +18,4 @@ color = Color(0.207843, 0.501961, 0.580392, 1)
 position = Vector2(712, 560)
 
 [node name="bardock" parent="." instance=ExtResource("2_jlj55")]
+position = Vector2(1198, 388)

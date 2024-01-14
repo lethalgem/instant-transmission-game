@@ -15,11 +15,12 @@ func _on_clicked_point_click_released(
 		global_position = initial_click_position
 		if did_exceed_distance:
 			look_at(released_position)
-			%Beam.is_casting = true
+			%AttackBeam.is_casting = true
 
-		%Timer.start()
+		%AttackTimer.start()
 		is_frozen = true
 
 
 func _on_timer_timeout():
+	%AttackBeam.is_casting = false
 	is_frozen = false

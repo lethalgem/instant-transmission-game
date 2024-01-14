@@ -44,7 +44,7 @@ func _physics_process(_delta):
 		%ClickArrow.hide()
 
 
-func is_exceeding_required_distance(position_one: Vector2, position_two: Vector2) -> bool:
+func is_exceeding_required_distance(_position_one: Vector2, _position_two: Vector2) -> bool:
 	const DISTANCE_REQUIRED = 100
 	var distance_to_held_position = calculate_distance(
 		click_position,

@@ -21,20 +21,24 @@ load_path = "res://.godot/imported/glowing_circle.png-81cb6beb0518ebd499cd00c85e
 load_path = "res://.godot/imported/glowing_circle.png-81cb6beb0518ebd499cd00c85e2583ee.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dwb3c"]
+resource_local_to_scene = true
 size = Vector2(10, 100)
 
 [node name="Beam" type="RayCast2D"]
 position = Vector2(137, 151)
 rotation = 4.71239
 target_position = Vector2(2.08165e-12, 2000)
+collision_mask = 2
 script = ExtResource("1_2jo6e")
 
 [node name="Line2D" type="Line2D" parent="."]
 unique_name_in_owner = true
+visible = false
 points = PackedVector2Array(2.08165e-12, 2.08165e-12, 2.08165e-12, 100)
 default_color = Color(0, 0.54902, 0.890196, 1)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
 
 [node name="TestCollisionWall" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-0.999084, 948)
@@ -87,7 +91,7 @@ color_ramp = SubResource("Gradient_ovhq1")
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="BeamCollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 unique_name_in_owner = true
 position = Vector2(2.08165e-12, 50)
 shape = SubResource("RectangleShape2D_dwb3c")

@@ -1,9 +1,9 @@
 extends RayCast2D
 
 # Enable to test
-#func _unhandled_input(event):
-#if event is InputEventMouseButton:
-#is_casting = event.pressed
+# func _unhandled_input(event):
+# 	if event is InputEventMouseButton:
+# 		is_casting = event.pressed
 
 var cast_point = Vector2(0, 0)
 var width = 0
@@ -41,8 +41,10 @@ func _physics_process(_delta):
 
 	%Line2D.points[1] = cast_point
 	%Line2D.width = width
-	%CollisionShape2D.shape.size = Vector2(width, cast_point.y)
-	%CollisionShape2D.position = Vector2(%CollisionShape2D.position.x, cast_point.y / 2)
+	%BeamCollisionShape2D.shape.size = Vector2(width, cast_point.y)
+	%BeamCollisionShape2D.position = Vector2(
+		%BeamCollisionShape2D.position.x, cast_point.y / 2 + 10
+	)
 	%BeamParticles2D.position = cast_point * 0.5
 	%BeamParticles2D.emission_rect_extents.y = cast_point.length() * 0.5
 
@@ -61,10 +63,6 @@ func disappear():
 	var tween = create_tween().set_parallel(true)
 	tween.tween_property(self, "width", 0, TIME_TO_DISAPPEAR)
 	tween.tween_property(self, "cast_point", Vector2(0, 0), TIME_TO_DISAPPEAR)
-
-
-func _on_timer_timeout():
-	is_casting = false
 
 
 func _on_area_2d_body_entered(body):

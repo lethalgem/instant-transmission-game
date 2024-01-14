@@ -1,28 +1,58 @@
-[gd_scene load_steps=4 format=3 uid="uid://cexv7k8xg1q6i"]
+[gd_scene load_steps=6 format=3 uid="uid://cexv7k8xg1q6i"]
 
 [ext_resource type="PackedScene" uid="uid://ogik4s70pgwl" path="res://characters/slime/slime.tscn" id="1_fxydc"]
 [ext_resource type="Script" path="res://bardock.gd" id="1_mkrw1"]
+[ext_resource type="PackedScene" uid="uid://x1c878xjrk46" path="res://beam.tscn" id="3_itksn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dui8v"]
 radius = 54.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_yu5qv"]
+radius = 179.176
+
 [node name="bardock" type="CharacterBody2D"]
+rotation = -4.09105
+scale = Vector2(1, -1)
 collision_layer = 3
 script = ExtResource("1_mkrw1")
 
 [node name="Slime" parent="." instance=ExtResource("1_fxydc")]
 unique_name_in_owner = true
-position = Vector2(1, -5)
+position = Vector2(1, 28)
 
 [node name="BodyCollision2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -33)
+position = Vector2(1, -1)
 shape = SubResource("CircleShape2D_dui8v")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="TestTargetCollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+unique_name_in_owner = true
+top_level = true
+position = Vector2(896, 588)
+shape = SubResource("CircleShape2D_yu5qv")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Beam" parent="." instance=ExtResource("3_itksn")]
+unique_name_in_owner = true
+position = Vector2(63, -1)
+
+[node name="DelayUntilAttackTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.5
+one_shot = true
 
 [node name="AttackTimer" type="Timer" parent="."]
 unique_name_in_owner = true
+wait_time = 1.5
+one_shot = true
 
 [node name="TeleportTimer" type="Timer" parent="."]
+unique_name_in_owner = true
 wait_time = 1.5
 autostart = true
 
+[connection signal="timeout" from="DelayUntilAttackTimer" to="." method="_on_delay_until_attack_timer_timeout"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="TeleportTimer" to="." method="_on_teleport_timer_timeout"]
