@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://x1c878xjrk46"]
+
+[ext_resource type="Script" path="res://Beam.gd" id="1_2jo6e"]
+
+[node name="Beam" type="RayCast2D"]
+position = Vector2(137, 151)
+rotation = 4.71239
+target_position = Vector2(2.08165e-12, 2000)
+script = ExtResource("1_2jo6e")
+
+[node name="Line2D" type="Line2D" parent="."]
+unique_name_in_owner = true
+points = PackedVector2Array(2.08165e-12, 2.08165e-12, 2.08165e-12, 100)
