@@ -33,7 +33,6 @@ script = ExtResource("1_2jo6e")
 
 [node name="Line2D" type="Line2D" parent="."]
 unique_name_in_owner = true
-visible = false
 points = PackedVector2Array(2.08165e-12, 2.08165e-12, 2.08165e-12, 100)
 default_color = Color(0, 0.54902, 0.890196, 1)
 
