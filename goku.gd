@@ -55,6 +55,7 @@ func begin_teleport(to_position):
 func teleport():
 	teleported.emit(teleport_destination)
 	global_position = teleport_destination
+	global_rotation = 0
 	%PlayerCharacter.play_teleport_end_animation()
 
 
