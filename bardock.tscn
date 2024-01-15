@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ogik4s70pgwl" path="res://characters/slime/slime.tscn" id="1_fxydc"]
 [ext_resource type="Script" path="res://bardock.gd" id="1_mkrw1"]
-[ext_resource type="PackedScene" uid="uid://x1c878xjrk46" path="res://beam.tscn" id="3_itksn"]
+[ext_resource type="PackedScene" uid="uid://b0m52itgbvyg3" path="res://enemy_beam.tscn" id="3_y604f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dui8v"]
 radius = 54.0
@@ -11,8 +11,7 @@ radius = 54.0
 radius = 179.176
 
 [node name="bardock" type="CharacterBody2D"]
-rotation = -4.09105
-scale = Vector2(1, -1)
+collision_layer = 3
 script = ExtResource("1_mkrw1")
 
 [node name="Slime" parent="." instance=ExtResource("1_fxydc")]
@@ -33,11 +32,10 @@ position = Vector2(896, 588)
 shape = SubResource("CircleShape2D_yu5qv")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
-[node name="Beam" parent="." instance=ExtResource("3_itksn")]
+[node name="EnemyBeam" parent="." instance=ExtResource("3_y604f")]
 unique_name_in_owner = true
 modulate = Color(0.580392, 0, 0.203922, 1)
-position = Vector2(63, -1)
-collision_mask = 4
+position = Vector2(84, -1)
 
 [node name="DelayUntilAttackTimer" type="Timer" parent="."]
 unique_name_in_owner = true

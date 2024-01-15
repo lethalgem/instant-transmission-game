@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://x1c878xjrk46"]
+[gd_scene load_steps=9 format=3 uid="uid://b0m52itgbvyg3"]
 
-[ext_resource type="Script" path="res://Beam.gd" id="1_2jo6e"]
-[ext_resource type="Texture2D" uid="uid://xxhd81rvj2de" path="res://glowing_circle.png" id="2_ri7or"]
+[ext_resource type="Script" path="res://Beam.gd" id="1_eevhy"]
+[ext_resource type="Texture2D" uid="uid://xxhd81rvj2de" path="res://glowing_circle.png" id="2_t5biq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s4558"]
 size = Vector2(288, 34)
@@ -24,12 +24,12 @@ load_path = "res://.godot/imported/glowing_circle.png-81cb6beb0518ebd499cd00c85e
 resource_local_to_scene = true
 size = Vector2(10, 100)
 
-[node name="Beam" type="RayCast2D"]
+[node name="EnemyBeam" type="RayCast2D"]
 position = Vector2(137, 151)
 rotation = 4.71239
 target_position = Vector2(2.08165e-12, 2000)
-collision_mask = 2
-script = ExtResource("1_2jo6e")
+collision_mask = 4
+script = ExtResource("1_eevhy")
 
 [node name="Line2D" type="Line2D" parent="."]
 unique_name_in_owner = true
@@ -49,7 +49,7 @@ unique_name_in_owner = true
 emitting = false
 lifetime = 0.3
 local_coords = true
-texture = ExtResource("2_ri7or")
+texture = ExtResource("2_t5biq")
 direction = Vector2(2.08165e-12, 1)
 spread = 90.0
 gravity = Vector2(2.08165e-12, 2.08165e-12)
@@ -89,7 +89,7 @@ color_ramp = SubResource("Gradient_ovhq1")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 4
 
 [node name="BeamCollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 unique_name_in_owner = true

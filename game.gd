@@ -5,6 +5,7 @@ var current_enemy_count = 0
 
 
 func _on_goku_health_depleted():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	%GameOver.show()
 	get_tree().paused = true
 
