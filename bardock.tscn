@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cexv7k8xg1q6i"]
 
-[ext_resource type="PackedScene" uid="uid://ogik4s70pgwl" path="res://characters/slime/slime.tscn" id="1_fxydc"]
 [ext_resource type="Script" path="res://bardock.gd" id="1_mkrw1"]
+[ext_resource type="PackedScene" uid="uid://bnwt1g8uvyof4" path="res://characters/enemy_character/enemy_character.tscn" id="2_88aeu"]
 [ext_resource type="PackedScene" uid="uid://d4a6y382gjl3i" path="res://aim_beam.tscn" id="3_awt46"]
 [ext_resource type="PackedScene" uid="uid://b0m52itgbvyg3" path="res://enemy_beam.tscn" id="3_y604f"]
 
@@ -15,9 +15,9 @@ radius = 179.176
 collision_layer = 3
 script = ExtResource("1_mkrw1")
 
-[node name="Slime" parent="." instance=ExtResource("1_fxydc")]
+[node name="EnemyCharacter" parent="." instance=ExtResource("2_88aeu")]
 unique_name_in_owner = true
-position = Vector2(1, 28)
+scale = Vector2(2, 2)
 
 [node name="BodyCollision2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -1)
@@ -63,6 +63,7 @@ unique_name_in_owner = true
 wait_time = 1.5
 one_shot = true
 
+[connection signal="animation_finished" from="EnemyCharacter" to="." method="_on_enemy_character_animation_finished"]
 [connection signal="timeout" from="TeleportTimer" to="." method="_on_teleport_timer_timeout"]
 [connection signal="timeout" from="DelayUntilAimTimer" to="." method="_on_delay_until_aim_timer_timeout"]
 [connection signal="timeout" from="DelayUntilAttackTimer" to="." method="_on_delay_until_attack_timer_timeout"]

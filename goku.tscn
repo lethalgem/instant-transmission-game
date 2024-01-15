@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://x1c878xjrk46" path="res://beam.tscn" id="4_icp4f"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5fjsa"]
-radius = 39.0
-height = 124.0
+radius = 32.0
+height = 84.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m5me8"]
 size = Vector2(422, 356)
@@ -18,7 +18,7 @@ script = ExtResource("1_nxmce")
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_7sj0r")]
 unique_name_in_owner = true
-scale = Vector2(3, 3)
+scale = Vector2(2, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)

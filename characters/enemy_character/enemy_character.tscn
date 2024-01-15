@@ -1,0 +1,87 @@
+[gd_scene load_steps=12 format=3 uid="uid://bnwt1g8uvyof4"]
+
+[ext_resource type="Script" path="res://characters/enemy_character/enemy_character.gd" id="1_8jib7"]
+[ext_resource type="Texture2D" uid="uid://bkoeie1fychqn" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 1/Character1M_1_punch_3.png" id="5_ync6f"]
+[ext_resource type="Texture2D" uid="uid://c81tehjbcydgo" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 1/Character1M_1_punch_4.png" id="6_2wfxb"]
+[ext_resource type="Texture2D" uid="uid://p545hon31p80" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 1/Character1M_1_punch_0.png" id="7_al0wl"]
+[ext_resource type="Texture2D" uid="uid://wdgrw5gouk5i" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 1/Character1M_1_punch_1.png" id="8_6x0cy"]
+[ext_resource type="Texture2D" uid="uid://57w4uu63hmq6" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 1/Character1M_1_punch_2.png" id="9_281no"]
+[ext_resource type="Texture2D" uid="uid://dy4jskc5t8hph" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 1/Character1M_1_jump_0.png" id="10_r0hk8"]
+[ext_resource type="Texture2D" uid="uid://crt7wvmg01ikq" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 1/Character1M_1_jump_1.png" id="11_4bv02"]
+[ext_resource type="Texture2D" uid="uid://ccajkspiiml7o" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 1/Character1M_1_damage_1.png" id="16_gxuyc"]
+[ext_resource type="Texture2D" uid="uid://cikrf5i308upb" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 1/Character1M_1_damage_0.png" id="17_pnlbk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w5k17"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ync6f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2wfxb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_al0wl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_al0wl")
+}],
+"loop": false,
+"name": &"attack_begin",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_6x0cy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_281no")
+}],
+"loop": true,
+"name": &"attack_hold",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_r0hk8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_4bv02")
+}],
+"loop": true,
+"name": &"flying",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_gxuyc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_pnlbk")
+}],
+"loop": false,
+"name": &"teleport_begin",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_pnlbk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_gxuyc")
+}],
+"loop": false,
+"name": &"teleport_end",
+"speed": 30.0
+}]
+
+[node name="EnemyCharacter" type="Node2D"]
+script = ExtResource("1_8jib7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(2.08165e-12, 2.08165e-12)
+sprite_frames = SubResource("SpriteFrames_w5k17")
+animation = &"attack_begin"
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

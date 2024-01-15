@@ -15,6 +15,14 @@ func play_attack_hold_animation():
 	%AnimatedSprite2D.play("attack_hold")
 
 
+func play_death_animation():
+	%AnimatedSprite2D.play("death")
+
+
+func play_overload_animation():
+	%AnimatedSprite2D.play("overload")
+
+
 func play_teleport_begin_animation():
 	%AnimatedSprite2D.play("teleport_begin")
 

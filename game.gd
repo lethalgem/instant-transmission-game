@@ -21,7 +21,7 @@ func spawn_enemy():
 
 func _on_spawn_timer_timeout():
 	if current_enemy_count < score + 1:
-		#spawn_enemy()
+		spawn_enemy()
 		pass
 
 

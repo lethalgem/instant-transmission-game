@@ -11,14 +11,13 @@ var health = 1
 
 
 func _ready():
-	%Slime.play_walk()
+	%EnemyCharacter.play_idle_animation()
 	if player == null:
 		player = %TestTargetCollisionShape2D
 
 
 func take_damage():
 	health -= 1
-	%Slime.play_hurt()
 
 	if health == 0:
 		queue_free()
@@ -32,16 +31,17 @@ func take_damage():
 
 
 func teleport():
-	global_position = calc_random_position()
-	look_at(player.global_position)
-	flip_character_if_needed()
-
-
-func _on_teleport_timer_timeout():
-	teleport()
 	%TeleportTimer.set_paused(true)
 	%DelayUntilAimTimer.start()
 	%DelayUntilAttackTimer.start()
+	global_position = calc_random_position()
+	look_at(player.global_position)
+	flip_character_if_needed()
+	%EnemyCharacter.play_teleport_end_animation()
+
+
+func _on_teleport_timer_timeout():
+	%EnemyCharacter.play_teleport_begin_animation()
 
 
 func calc_random_position() -> Vector2:
@@ -75,19 +75,29 @@ func flip_character_if_needed():
 
 
 func _on_delay_until_aim_timer_timeout():
+	%EnemyCharacter.play_attack_begin_animation()
 	%AimBeam.is_casting = true
 
 
 func _on_delay_until_attack_timer_timeout():
 	%AimBeam.is_casting = false
+	%EnemyCharacter.play_attack_hold_animation()
 	attack()
 
 
 func _on_attack_timer_timeout():
 	%EnemyBeam.is_casting = false
+	%EnemyCharacter.play_idle_animation()
 	%TeleportTimer.set_paused(false)
 
 
 func attack():
 	%EnemyBeam.is_casting = true
 	%AttackTimer.start()
+
+
+func _on_enemy_character_animation_finished(animation_name):
+	if animation_name == "teleport_begin":
+		teleport()
+	if animation_name == "teleport_end":
+		%EnemyCharacter.play_idle_animation()
