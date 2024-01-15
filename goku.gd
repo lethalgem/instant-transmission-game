@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal health_depleted
+
 var is_frozen = false
 var health = 1
 
@@ -19,6 +21,8 @@ func take_damage():
 		var smoke = SMOKE_SCENE.instantiate()
 		get_parent().add_child(smoke)
 		smoke.global_position = global_position
+
+		health_depleted.emit()
 
 
 func _on_clicked_point_click_released(

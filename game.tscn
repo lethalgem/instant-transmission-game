@@ -1,10 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfb4m53jrc1sb"]
+[gd_scene load_steps=4 format=3 uid="uid://cfb4m53jrc1sb"]
 
 [ext_resource type="PackedScene" uid="uid://bmgqwgwen0pge" path="res://goku.tscn" id="1_2as26"]
+[ext_resource type="Script" path="res://game.gd" id="1_jqwrt"]
 [ext_resource type="PackedScene" uid="uid://cexv7k8xg1q6i" path="res://bardock.tscn" id="2_jlj55"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_jqwrt")
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -1
@@ -19,3 +21,33 @@ position = Vector2(712, 560)
 
 [node name="bardock" parent="." instance=ExtResource("2_jlj55")]
 position = Vector2(1198, 388)
+
+[node name="GameOver" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="GameOver"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.596078)
+
+[node name="Label" type="Label" parent="GameOver/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -11.5
+offset_right = 46.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 256
+text = "GAME OVER"
+
+[connection signal="health_depleted" from="Goku" to="." method="_on_goku_health_depleted"]
