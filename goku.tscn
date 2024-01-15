@@ -13,7 +13,7 @@ height = 124.0
 size = Vector2(422, 356)
 
 [node name="Goku" type="CharacterBody2D"]
-collision_layer = 3
+collision_layer = 7
 script = ExtResource("1_nxmce")
 
 [node name="HappyBoo" parent="." instance=ExtResource("1_2agf0")]
@@ -41,6 +41,7 @@ shape = SubResource("RectangleShape2D_m5me8")
 
 [node name="AttackTimer" type="Timer" parent="."]
 unique_name_in_owner = true
+wait_time = 0.4
 one_shot = true
 
 [connection signal="click_released" from="ClickedPoint" to="." method="_on_clicked_point_click_released"]
