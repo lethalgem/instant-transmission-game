@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal health_depleted
+
 var health = 1
 
 @onready var player = get_node("/root/Game/Goku")
@@ -25,6 +27,8 @@ func take_damage():
 		var smoke = SMOKE_SCENE.instantiate()
 		get_parent().add_child(smoke)
 		smoke.global_position = global_position
+
+		health_depleted.emit()
 
 
 func teleport():

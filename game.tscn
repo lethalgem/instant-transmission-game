@@ -2,7 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://bmgqwgwen0pge" path="res://goku.tscn" id="1_2as26"]
 [ext_resource type="Script" path="res://game.gd" id="1_jqwrt"]
-[ext_resource type="PackedScene" uid="uid://cexv7k8xg1q6i" path="res://bardock.tscn" id="2_jlj55"]
+
+[sub_resource type="Curve2D" id="Curve2D_3hmqq"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -354, 146, 0, 0, 0, 0, -382, 462)
+}
+point_count = 2
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -18,9 +23,6 @@ color = Color(0.207843, 0.501961, 0.580392, 1)
 
 [node name="Goku" parent="." instance=ExtResource("1_2as26")]
 position = Vector2(712, 560)
-
-[node name="bardock" parent="." instance=ExtResource("2_jlj55")]
-position = Vector2(1198, 388)
 
 [node name="GameOver" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
@@ -50,4 +52,40 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 256
 text = "GAME OVER"
 
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 0.75
+autostart = true
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_3hmqq")
+
+[node name="SpawnPath" type="PathFollow2D" parent="Path2D"]
+unique_name_in_owner = true
+position = Vector2(-380.246, 442.207)
+rotation = 1.65917
+progress = 297.338
+
+[node name="Score" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Score"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="ScoreLabel" type="Label" parent="Score/ColorRect"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -349.0
+offset_right = 146.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 256
+text = "0"
+
 [connection signal="health_depleted" from="Goku" to="." method="_on_goku_health_depleted"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
