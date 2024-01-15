@@ -13,7 +13,7 @@ func _on_goku_teleported(new_global_position):
 	var direction = new_global_position - %CenterOfScreenMarker.global_position
 	var magnitude = new_global_position.distance_to(%CenterOfScreenMarker.global_position)
 	var normalized = direction / magnitude
-	var new_camera_position = %CenterOfScreenMarker.global_position + (2.5 * normalized)
+	var new_camera_position = %CenterOfScreenMarker.global_position + (4 * normalized)
 
 	print(new_global_position)
 	print(%CenterOfScreenMarker.global_position)

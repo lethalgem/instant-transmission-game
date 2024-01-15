@@ -48,14 +48,14 @@ unique_name_in_owner = true
 wait_time = 1.5
 autostart = true
 
-[node name="DelayUntilAttackTimer" type="Timer" parent="."]
-unique_name_in_owner = true
-wait_time = 1.5
-one_shot = true
-
 [node name="DelayUntilAimTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 wait_time = 0.3
+one_shot = true
+
+[node name="DelayUntilAttackTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 2.0
 one_shot = true
 
 [node name="AttackTimer" type="Timer" parent="."]
@@ -64,6 +64,6 @@ wait_time = 1.5
 one_shot = true
 
 [connection signal="timeout" from="TeleportTimer" to="." method="_on_teleport_timer_timeout"]
-[connection signal="timeout" from="DelayUntilAttackTimer" to="." method="_on_delay_until_attack_timer_timeout"]
 [connection signal="timeout" from="DelayUntilAimTimer" to="." method="_on_delay_until_aim_timer_timeout"]
+[connection signal="timeout" from="DelayUntilAttackTimer" to="." method="_on_delay_until_attack_timer_timeout"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
