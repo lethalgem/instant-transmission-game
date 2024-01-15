@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://x1c878xjrk46"]
 
-[ext_resource type="Script" path="res://Beam.gd" id="1_2jo6e"]
+[ext_resource type="Script" path="res://beam.gd" id="1_2jo6e"]
 [ext_resource type="Texture2D" uid="uid://xxhd81rvj2de" path="res://glowing_circle.png" id="2_ri7or"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s4558"]

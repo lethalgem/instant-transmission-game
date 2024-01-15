@@ -41,7 +41,7 @@ shape = SubResource("RectangleShape2D_m5me8")
 
 [node name="AttackTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 0.4
+wait_time = 0.3
 one_shot = true
 
 [connection signal="click_released" from="ClickedPoint" to="." method="_on_clicked_point_click_released"]

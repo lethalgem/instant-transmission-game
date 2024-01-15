@@ -40,6 +40,7 @@ func teleport():
 func _on_teleport_timer_timeout():
 	teleport()
 	%TeleportTimer.set_paused(true)
+	%DelayUntilAimTimer.start()
 	%DelayUntilAttackTimer.start()
 
 
@@ -73,9 +74,13 @@ func flip_character_if_needed():
 		scale.y = 1
 
 
-func attack():
-	%EnemyBeam.is_casting = true
-	%AttackTimer.start()
+func _on_delay_until_aim_timer_timeout():
+	%AimBeam.is_casting = true
+
+
+func _on_delay_until_attack_timer_timeout():
+	%AimBeam.is_casting = false
+	attack()
 
 
 func _on_attack_timer_timeout():
@@ -83,5 +88,6 @@ func _on_attack_timer_timeout():
 	%TeleportTimer.set_paused(false)
 
 
-func _on_delay_until_attack_timer_timeout():
-	attack()
+func attack():
+	%EnemyBeam.is_casting = true
+	%AttackTimer.start()

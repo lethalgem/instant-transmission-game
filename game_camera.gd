@@ -7,7 +7,7 @@ func _process(delta):
 	global_translate(velocity)
 
 
-func _on_goku_teleported(initial_global_position, new_global_position):
+func _on_goku_teleported(new_global_position):
 	const TIME_TO_TRANSLATE = 2
 
 	var direction = new_global_position - %CenterOfScreenMarker.global_position
