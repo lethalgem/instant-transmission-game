@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfb4m53jrc1sb"]
+[gd_scene load_steps=7 format=3 uid="uid://cfb4m53jrc1sb"]
 
 [ext_resource type="PackedScene" uid="uid://bmgqwgwen0pge" path="res://goku.tscn" id="1_2as26"]
 [ext_resource type="Script" path="res://game.gd" id="1_jqwrt"]
@@ -8,6 +8,27 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -354, 146, 0, 0, 0, 0, -382, 462)
 }
 point_count = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q75dj"]
+bg_color = Color(0.0627451, 0.698039, 0.937255, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hx0oe"]
+bg_color = Color(0, 0.478431, 0.764706, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f0y0m"]
+bg_color = Color(0.0235294, 0.113725, 0.329412, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -23,34 +44,6 @@ color = Color(0.207843, 0.501961, 0.580392, 1)
 
 [node name="Goku" parent="." instance=ExtResource("1_2as26")]
 position = Vector2(712, 560)
-
-[node name="GameOver" type="CanvasLayer" parent="."]
-unique_name_in_owner = true
-visible = false
-
-[node name="ColorRect" type="ColorRect" parent="GameOver"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.596078)
-
-[node name="Label" type="Label" parent="GameOver/ColorRect"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -46.0
-offset_top = -11.5
-offset_right = 46.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 256
-text = "GAME OVER"
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 0.75
@@ -87,5 +80,55 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 256
 text = "0"
 
+[node name="GameOver" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="GameOver"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.596078)
+
+[node name="Label" type="Label" parent="GameOver/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -11.5
+offset_right = 46.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 256
+text = "GAME OVER"
+
+[node name="RestartButton" type="Button" parent="GameOver/ColorRect"]
+process_mode = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -197.0
+offset_top = 235.0
+offset_right = 197.0
+offset_bottom = 357.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_q75dj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hx0oe")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_f0y0m")
+text = "Try Again"
+
 [connection signal="health_depleted" from="Goku" to="." method="_on_goku_health_depleted"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="pressed" from="GameOver/ColorRect/RestartButton" to="." method="_on_restart_button_pressed"]
