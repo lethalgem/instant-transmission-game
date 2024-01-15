@@ -16,6 +16,8 @@ func _ready():
 func _physics_process(_delta):
 	if !is_frozen && Input.is_action_just_released("shoot"):
 		begin_attack()
+	if Input.is_action_just_released("overload"):
+		%PlayerCharacter.play_overload_animation()
 
 
 func take_damage():
@@ -32,14 +34,10 @@ func take_damage():
 		health_depleted.emit()
 
 
-func flip_character_if_needed():
-	if (
-		(global_rotation_degrees > 90 and global_rotation_degrees < 270)
-		or (global_rotation_degrees < -90 and global_rotation_degrees > -270)
-	):
-		scale.y = -1
-	else:
-		scale.y = 1
+func overload_attack():
+	for body in %OverloadAttackArea.get_overlapping_bodies():
+		if body.has_method("take_damage"):
+			body.take_damage()
 
 
 func _on_clicked_point_click_released(released_position):
@@ -65,6 +63,16 @@ func begin_attack():
 	%PlayerCharacter.play_attack_begin_animation()
 
 
+func flip_character_if_needed():
+	if (
+		(global_rotation_degrees > 90 and global_rotation_degrees < 270)
+		or (global_rotation_degrees < -90 and global_rotation_degrees > -270)
+	):
+		scale.y = -1
+	else:
+		scale.y = 1
+
+
 func attack():
 	%AttackBeam.is_casting = true
 	%AttackTimer.start()
@@ -85,3 +93,6 @@ func _on_player_character_animation_finished(animation_name):
 	elif animation_name == "attack_begin":
 		attack()
 		%PlayerCharacter.play_attack_hold_animation()
+	elif animation_name == "overload":
+		overload_attack()
+		%PlayerCharacter.play_idle_animation()
