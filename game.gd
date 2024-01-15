@@ -1,5 +1,7 @@
 extends Node2D
 
+signal score_increased
+
 var score = 0
 var current_enemy_count = 0
 
@@ -29,6 +31,7 @@ func _on_enemy_health_depleted():
 	current_enemy_count -= 1
 	score += 1
 	%ScoreLabel.text = str(score)
+	score_increased.emit()
 
 
 func _on_restart_button_pressed():

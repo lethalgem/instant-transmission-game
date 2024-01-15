@@ -15,12 +15,5 @@ func _on_goku_teleported(new_global_position):
 	var normalized = direction / magnitude
 	var new_camera_position = %CenterOfScreenMarker.global_position + (4 * normalized)
 
-	print(new_global_position)
-	print(%CenterOfScreenMarker.global_position)
-	print(direction)
-	print(magnitude)
-	print(normalized)
-	print(new_camera_position)
-
 	var tween = create_tween()
 	tween.tween_property(self, "global_position", new_camera_position, TIME_TO_TRANSLATE)

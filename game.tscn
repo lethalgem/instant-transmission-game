@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cfb4m53jrc1sb"]
+[gd_scene load_steps=19 format=3 uid="uid://cfb4m53jrc1sb"]
 
 [ext_resource type="PackedScene" uid="uid://bmgqwgwen0pge" path="res://goku.tscn" id="1_2as26"]
 [ext_resource type="Script" path="res://game.gd" id="1_jqwrt"]
@@ -10,12 +10,28 @@
 [ext_resource type="Texture2D" uid="uid://deqjcetx6m770" path="res://glacial-mountains/Layers/clouds_mg_3.png" id="5_ky3kp"]
 [ext_resource type="Texture2D" uid="uid://4cbai5c6tdyo" path="res://glacial-mountains/Layers/clouds_mg_2.png" id="6_reltl"]
 [ext_resource type="Texture2D" uid="uid://oahduq7ho0nm" path="res://glacial-mountains/Layers/cloud_lonely.png" id="8_8spe6"]
+[ext_resource type="Script" path="res://overload_status_label.gd" id="11_dyslq"]
+[ext_resource type="Script" path="res://overload_progress_bar.gd" id="11_qkw2n"]
 
 [sub_resource type="Curve2D" id="Curve2D_3hmqq"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -354, 146, 0, 0, 0, 0, -382, 462)
 }
 point_count = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3jihk"]
+bg_color = Color(0.792157, 0.792157, 0.792157, 0.317647)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m2b5p"]
+bg_color = Color(1, 0.835294, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q75dj"]
 bg_color = Color(0.0627451, 0.698039, 0.937255, 1)
@@ -513,9 +529,9 @@ position = Vector2(-380.246, 442.207)
 rotation = 1.65917
 progress = 297.338
 
-[node name="Score" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="Score"]
+[node name="ColorRect" type="ColorRect" parent="UI"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -523,7 +539,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
-[node name="ScoreLabel" type="Label" parent="Score/ColorRect"]
+[node name="ScoreLabel" type="Label" parent="UI/ColorRect"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 2
@@ -536,6 +552,54 @@ offset_bottom = 48.0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 256
 text = "0"
+
+[node name="OverloadProgressBar" type="ProgressBar" parent="UI/ColorRect"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -714.0
+offset_top = -51.0
+offset_right = 714.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.152941, 0.168627, 0.188235, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/background = SubResource("StyleBoxFlat_3jihk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_m2b5p")
+max_value = 3.0
+step = 1.0
+show_percentage = false
+script = ExtResource("11_qkw2n")
+
+[node name="OverloadStatusLabel" type="Label" parent="UI/ColorRect"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -46.0
+offset_top = -81.0
+offset_right = 46.0
+offset_bottom = -58.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0.717647, 0.188235, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.321569)
+theme_override_font_sizes/font_size = 36
+text = "Placeholder"
+script = ExtResource("11_dyslq")
+
+[node name="ShowTimer" type="Timer" parent="UI/ColorRect/OverloadStatusLabel"]
+unique_name_in_owner = true
+wait_time = 3.0
+one_shot = true
 
 [node name="GameOver" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
@@ -594,7 +658,14 @@ script = ExtResource("4_hsskd")
 unique_name_in_owner = true
 position = Vector2(2.08165e-12, 2.08165e-12)
 
+[connection signal="score_increased" from="." to="UI/ColorRect/OverloadProgressBar" method="_on_game_score_increased"]
+[connection signal="attempted_overload" from="Goku" to="UI/ColorRect/OverloadStatusLabel" method="_on_goku_attempted_overload"]
+[connection signal="has_overloaded" from="Goku" to="UI/ColorRect/OverloadProgressBar" method="_on_goku_has_overloaded"]
+[connection signal="has_overloaded" from="Goku" to="UI/ColorRect/OverloadStatusLabel" method="_on_goku_has_overloaded"]
 [connection signal="health_depleted" from="Goku" to="." method="_on_goku_health_depleted"]
 [connection signal="teleported" from="Goku" to="GameCamera" method="_on_goku_teleported"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="progress_bar_full" from="UI/ColorRect/OverloadProgressBar" to="Goku" method="_on_overload_progress_bar_progress_bar_full"]
+[connection signal="progress_bar_full" from="UI/ColorRect/OverloadProgressBar" to="UI/ColorRect/OverloadStatusLabel" method="_on_overload_progress_bar_progress_bar_full"]
+[connection signal="timeout" from="UI/ColorRect/OverloadStatusLabel/ShowTimer" to="UI/ColorRect/OverloadStatusLabel" method="_on_show_timer_timeout"]
 [connection signal="pressed" from="GameOver/ColorRect/RestartButton" to="." method="_on_restart_button_pressed"]

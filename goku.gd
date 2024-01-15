@@ -2,10 +2,13 @@ extends CharacterBody2D
 
 signal health_depleted
 signal teleported(new_global_position)
+signal has_overloaded
+signal attempted_overload
 
 var is_frozen = false
 var health = 1
 var teleport_destination = Vector2.ZERO
+var can_overload = false
 
 
 func _ready():
@@ -17,7 +20,10 @@ func _physics_process(_delta):
 	if !is_frozen && Input.is_action_just_released("shoot"):
 		begin_attack()
 	if Input.is_action_just_released("overload"):
-		%PlayerCharacter.play_overload_animation()
+		if can_overload:
+			%PlayerCharacter.play_overload_animation()
+		else:
+			attempted_overload.emit()
 
 
 func take_damage():
@@ -38,6 +44,7 @@ func overload_attack():
 	for body in %OverloadAttackArea.get_overlapping_bodies():
 		if body.has_method("take_damage"):
 			body.take_damage()
+	can_overload = false
 
 
 func _on_clicked_point_click_released(released_position):
@@ -96,3 +103,7 @@ func _on_player_character_animation_finished(animation_name):
 	elif animation_name == "overload":
 		overload_attack()
 		%PlayerCharacter.play_idle_animation()
+
+
+func _on_overload_progress_bar_progress_bar_full():
+	can_overload = true
