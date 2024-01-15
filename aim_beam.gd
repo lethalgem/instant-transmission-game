@@ -1,11 +1,9 @@
 extends RayCast2D
 
-
 # Enable to test
-func _unhandled_input(event):
-	if event is InputEventMouseButton:
-		is_casting = event.pressed
-
+#func _unhandled_input(event):
+#if event is InputEventMouseButton:
+#is_casting = event.pressed
 
 var cast_to_point = Vector2.ZERO
 var cast_from_point = Vector2.ZERO

@@ -5,16 +5,17 @@ signal teleported(new_global_position)
 
 var is_frozen = false
 var health = 1
+var teleport_destination = Vector2.ZERO
 
 
 func _ready():
-	%HappyBoo.play_idle_animation()
+	%PlayerCharacter.play_idle_animation()
 	print(%TeleportPreventionCollision2D.get_path())
 
 
 func _physics_process(_delta):
 	if !is_frozen && Input.is_action_just_released("shoot"):
-		attack()
+		begin_attack()
 
 
 func take_damage():
@@ -43,18 +44,43 @@ func flip_character_if_needed():
 
 func _on_clicked_point_click_released(released_position):
 	if !is_frozen:
-		teleported.emit(global_position)
-		global_position = released_position
+		begin_teleport(released_position)
+
+
+func begin_teleport(to_position):
+	teleport_destination = to_position
+	%PlayerCharacter.play_teleport_begin_animation()
+
+
+func teleport():
+	teleported.emit(teleport_destination)
+	global_position = teleport_destination
+	%PlayerCharacter.play_teleport_end_animation()
+
+
+func begin_attack():
+	look_at(get_global_mouse_position())
+	flip_character_if_needed()
+	%PlayerCharacter.play_attack_begin_animation()
 
 
 func attack():
-	look_at(get_global_mouse_position())
-	flip_character_if_needed()
 	%AttackBeam.is_casting = true
 	%AttackTimer.start()
 	is_frozen = true
 
 
-func _on_timer_timeout():
+func _on_attack_timer_timeout():
+	%PlayerCharacter.play_idle_animation()
 	%AttackBeam.is_casting = false
 	is_frozen = false
+
+
+func _on_player_character_animation_finished(animation_name):
+	if animation_name == "teleport_begin":
+		teleport()
+	elif animation_name == "teleport_end":
+		%PlayerCharacter.play_idle_animation()
+	elif animation_name == "attack_begin":
+		attack()
+		%PlayerCharacter.play_attack_hold_animation()
