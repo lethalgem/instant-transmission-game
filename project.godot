@@ -77,7 +77,14 @@ Settings/Show_Tooltips=true
 config/name="Instant Transmission"
 run/main_scene="res://game.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+boot_splash/bg_color=Color(0.0784314, 0.133333, 0.25098, 1)
+boot_splash/image="res://GWJ-Full-Logo-tag-Orange2.png"
 config/icon="res://icon.png"
+boot_splash/minimum_display_time=3000
+
+[autoload]
+
+SceneTransition="*res://scene_transition.tscn"
 
 [display]
 

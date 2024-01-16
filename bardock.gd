@@ -10,12 +10,6 @@ var health = 1
 )
 
 
-func _ready():
-	%EnemyCharacter.play_idle_animation()
-	if player == null:
-		player = %TestTargetCollisionShape2D
-
-
 func take_damage():
 	health -= 1
 
@@ -41,6 +35,7 @@ func teleport():
 
 
 func _on_teleport_timer_timeout():
+	%CharacterSoundEffectPlayer.play_teleport_sound()
 	%EnemyCharacter.play_teleport_begin_animation()
 
 
@@ -92,6 +87,7 @@ func _on_attack_timer_timeout():
 
 
 func attack():
+	%CharacterSoundEffectPlayer.play_attack_sound()
 	%EnemyBeam.is_casting = true
 	%AttackTimer.start()
 

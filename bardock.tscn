@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cexv7k8xg1q6i"]
+[gd_scene load_steps=9 format=3 uid="uid://cexv7k8xg1q6i"]
 
 [ext_resource type="Script" path="res://bardock.gd" id="1_mkrw1"]
 [ext_resource type="PackedScene" uid="uid://bnwt1g8uvyof4" path="res://characters/enemy_character/enemy_character.tscn" id="2_88aeu"]
 [ext_resource type="PackedScene" uid="uid://d4a6y382gjl3i" path="res://aim_beam.tscn" id="3_awt46"]
 [ext_resource type="PackedScene" uid="uid://b0m52itgbvyg3" path="res://enemy_beam.tscn" id="3_y604f"]
+[ext_resource type="AudioStream" uid="uid://ct8eiv801ee8o" path="res://sound_effects/Teleport Sound Effect.mp3" id="5_diihu"]
+[ext_resource type="Script" path="res://character_sound_effect_player.gd" id="5_tpne5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dui8v"]
 radius = 54.0
@@ -62,6 +64,12 @@ one_shot = true
 unique_name_in_owner = true
 wait_time = 1.5
 one_shot = true
+
+[node name="CharacterSoundEffectPlayer" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_diihu")
+volume_db = -7.0
+script = ExtResource("5_tpne5")
 
 [connection signal="animation_finished" from="EnemyCharacter" to="." method="_on_enemy_character_animation_finished"]
 [connection signal="timeout" from="TeleportTimer" to="." method="_on_teleport_timer_timeout"]

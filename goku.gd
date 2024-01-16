@@ -40,6 +40,7 @@ func take_damage():
 
 
 func overload_attack():
+	%OverloadSoundEffectPlayer.play_overload_sound()
 	for body in %OverloadAttackArea.get_overlapping_bodies():
 		if body.has_method("take_damage"):
 			body.take_damage()
@@ -54,6 +55,7 @@ func _on_clicked_point_click_released(released_position):
 
 func begin_teleport(to_position):
 	teleport_destination = to_position
+	%CharacterSoundEffectPlayer.play_teleport_sound()
 	%PlayerCharacter.play_teleport_begin_animation()
 
 
@@ -67,6 +69,7 @@ func teleport():
 func begin_attack():
 	look_at(get_global_mouse_position())
 	flip_character_if_needed()
+	%CharacterSoundEffectPlayer.play_attack_sound()
 	%PlayerCharacter.play_attack_begin_animation()
 
 

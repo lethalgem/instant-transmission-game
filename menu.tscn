@@ -1,10 +1,29 @@
-[gd_scene load_steps=10 format=3 uid="uid://e5vjwsoynvt8"]
+[gd_scene load_steps=16 format=3 uid="uid://e5vjwsoynvt8"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_cwqqt"]
 [ext_resource type="PackedScene" uid="uid://ba1uokapt5k7a" path="res://mountain_parallax_background.tscn" id="2_coep6"]
+[ext_resource type="Texture2D" uid="uid://dy4jskc5t8hph" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 1/Character1M_1_jump_0.png" id="3_vy1gg"]
 [ext_resource type="Script" path="res://menu_camera.gd" id="3_wntey"]
+[ext_resource type="Texture2D" uid="uid://crt7wvmg01ikq" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 1/Character1M_1_jump_1.png" id="4_01lg8"]
+[ext_resource type="Script" path="res://menu_character.gd" id="4_do3cn"]
 [ext_resource type="AudioStream" uid="uid://d1x6t3ak3b4me" path="res://music/mr-sakamoto-185217.mp3" id="4_v8ori"]
 [ext_resource type="Script" path="res://menu_music_player.gd" id="5_ppv8g"]
+[ext_resource type="Script" path="res://menu_sound_effects_player.gd" id="7_71o5o"]
+[ext_resource type="AudioStream" uid="uid://vvdy61rvi2o1" path="res://sound_effects/African4.mp3" id="7_85wt0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6owak"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_vy1gg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_01lg8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lubke"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -34,6 +53,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cwqqt")
+
+[node name="Character" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="menu_character" type="AnimatedSprite2D" parent="Character"]
+position = Vector2(1260, 847)
+scale = Vector2(20, 20)
+sprite_frames = SubResource("SpriteFrames_6owak")
+autoplay = "default"
+frame_progress = 0.87453
+flip_h = true
+script = ExtResource("4_do3cn")
+
+[node name="HoverTimer" type="Timer" parent="Character/menu_character"]
+unique_name_in_owner = true
+wait_time = 10.0
+autostart = true
 
 [node name="Overlay" type="CanvasLayer" parent="."]
 layer = -1
@@ -135,6 +171,7 @@ text = "Controls"
 alignment = 0
 
 [node name="FullscreenButton" type="Button" parent="MenuButtonsVBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0.0235294, 0.113725, 0.329412, 1)
@@ -180,11 +217,21 @@ autostart = true
 unique_name_in_owner = true
 position = Vector2(960, 540)
 
+[node name="MenuSoundEffectsPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_85wt0")
+script = ExtResource("7_71o5o")
+
 [node name="MenuMusicPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_v8ori")
 volume_db = -30.0
 script = ExtResource("5_ppv8g")
 
+[connection signal="timeout" from="Character/menu_character/HoverTimer" to="Character/menu_character" method="_on_float_timer_timeout"]
 [connection signal="pressed" from="MenuButtonsVBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MenuButtonsVBoxContainer/StartButton" to="MenuSoundEffectsPlayer" method="_on_start_button_pressed"]
+[connection signal="pressed" from="MenuButtonsVBoxContainer/ControlsButton" to="MenuSoundEffectsPlayer" method="_on_controls_button_pressed"]
+[connection signal="pressed" from="MenuButtonsVBoxContainer/FullscreenButton" to="." method="_on_fullscreen_button_pressed"]
+[connection signal="pressed" from="MenuButtonsVBoxContainer/FullscreenButton" to="MenuSoundEffectsPlayer" method="_on_fullscreen_button_pressed"]
 [connection signal="pressed" from="MenuButtonsVBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="MenuButtonsVBoxContainer/QuitButton" to="MenuSoundEffectsPlayer" method="_on_quit_button_pressed"]
 [connection signal="timeout" from="MenuCamera/ShakeTimer" to="MenuCamera" method="_on_shake_timer_timeout"]

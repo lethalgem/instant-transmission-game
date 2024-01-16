@@ -39,7 +39,7 @@ func shake_camera():
 		tween
 		. tween_property(self, "global_position", new_camera_position, TIME_TO_TRANSLATE)
 		. set_ease(Tween.EASE_IN_OUT)
-		. set_trans(tween.TRANS_SINE)
+		. set_trans(Tween.TRANS_SINE)
 	)
 
 

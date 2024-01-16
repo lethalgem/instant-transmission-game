@@ -1,9 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmgqwgwen0pge"]
+[gd_scene load_steps=11 format=3 uid="uid://bmgqwgwen0pge"]
 
 [ext_resource type="Script" path="res://goku.gd" id="1_nxmce"]
 [ext_resource type="PackedScene" uid="uid://bsa61566j74xl" path="res://characters/player_character/player_character.tscn" id="2_7sj0r"]
 [ext_resource type="PackedScene" uid="uid://bvqcmxwqanmwg" path="res://clicked_point.tscn" id="3_fm6qu"]
 [ext_resource type="PackedScene" uid="uid://x1c878xjrk46" path="res://beam.tscn" id="4_icp4f"]
+[ext_resource type="AudioStream" uid="uid://ct8eiv801ee8o" path="res://sound_effects/Teleport Sound Effect.mp3" id="5_aw2p4"]
+[ext_resource type="Script" path="res://character_sound_effect_player.gd" id="5_pu0b2"]
+[ext_resource type="AudioStream" uid="uid://bnes7sivfayxj" path="res://sound_effects/heavy-beam-weapon-7052.mp3" id="7_doin7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5fjsa"]
 radius = 32.0
@@ -58,6 +61,18 @@ collision_mask = 2
 position = Vector2(2.08165e-12, 2.08165e-12)
 shape = SubResource("RectangleShape2D_ne4bm")
 debug_color = Color(0.952941, 0.152941, 0.407843, 0.419608)
+
+[node name="CharacterSoundEffectPlayer" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_aw2p4")
+volume_db = -7.0
+script = ExtResource("5_pu0b2")
+
+[node name="OverloadSoundEffectPlayer" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("7_doin7")
+volume_db = 10.0
+script = ExtResource("5_pu0b2")
 
 [connection signal="animation_finished" from="PlayerCharacter" to="." method="_on_player_character_animation_finished"]
 [connection signal="click_released" from="ClickedPoint" to="." method="_on_clicked_point_click_released"]

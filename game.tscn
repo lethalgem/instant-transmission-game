@@ -1,9 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://cfb4m53jrc1sb"]
+[gd_scene load_steps=18 format=3 uid="uid://cfb4m53jrc1sb"]
 
 [ext_resource type="PackedScene" uid="uid://bmgqwgwen0pge" path="res://goku.tscn" id="1_2as26"]
 [ext_resource type="Script" path="res://game.gd" id="1_jqwrt"]
 [ext_resource type="PackedScene" uid="uid://ba1uokapt5k7a" path="res://mountain_parallax_background.tscn" id="2_8uakb"]
 [ext_resource type="Script" path="res://game_camera.gd" id="4_hsskd"]
+[ext_resource type="AudioStream" uid="uid://cdp4he12sekgr" path="res://sound_effects/success_bell-6776.mp3" id="5_vwoe6"]
+[ext_resource type="AudioStream" uid="uid://cylbngj55cb1d" path="res://music/a-hero-of-the-80s-126684.mp3" id="7_feac5"]
+[ext_resource type="Script" path="res://in_game_music_player.gd" id="8_48mrn"]
+[ext_resource type="AudioStream" uid="uid://be6xrl46w0o34" path="res://music/lady-of-the-80x27s-128379.mp3" id="8_dah7a"]
+[ext_resource type="Script" path="res://death_sound_player.gd" id="10_5i4uk"]
 [ext_resource type="Script" path="res://overload_status_label.gd" id="11_dyslq"]
 [ext_resource type="Script" path="res://overload_progress_bar.gd" id="11_qkw2n"]
 
@@ -33,6 +38,8 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
+shadow_size = 10
+shadow_offset = Vector2(5, 5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hx0oe"]
 bg_color = Color(0, 0.478431, 0.764706, 1)
@@ -40,13 +47,18 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
+shadow_size = 10
+shadow_offset = Vector2(5, 5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f0y0m"]
 bg_color = Color(0.0235294, 0.113725, 0.329412, 1)
+border_color = Color(0.8, 0.8, 0.8, 0)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
+shadow_size = 10
+shadow_offset = Vector2(2, 2)
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -89,18 +101,24 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
-[node name="ScoreLabel" type="Label" parent="UI/ColorRect"]
+[node name="CanvasLayer" type="CanvasLayer" parent="UI/ColorRect"]
+layer = 2
+
+[node name="ScoreLabel" type="Label" parent="UI/ColorRect/CanvasLayer"]
 unique_name_in_owner = true
-layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = -301.0
-offset_right = 162.0
-offset_bottom = 48.0
+offset_left = 1698.0
+offset_top = -173.0
+offset_right = 1844.0
+offset_bottom = 176.0
 grow_vertical = 0
-theme_override_font_sizes/font_size = 256
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_outline_size = 25
+theme_override_font_sizes/font_size = 156
 text = "0"
 
 [node name="OverloadProgressBar" type="ProgressBar" parent="UI/ColorRect"]
@@ -120,7 +138,7 @@ theme_override_colors/font_color = Color(0.152941, 0.168627, 0.188235, 1)
 theme_override_font_sizes/font_size = 25
 theme_override_styles/background = SubResource("StyleBoxFlat_3jihk")
 theme_override_styles/fill = SubResource("StyleBoxFlat_m2b5p")
-max_value = 12.0
+max_value = 1.0
 step = 1.0
 show_percentage = false
 script = ExtResource("11_qkw2n")
@@ -128,6 +146,11 @@ script = ExtResource("11_qkw2n")
 [node name="PauseOverloadFillTimer" type="Timer" parent="UI/ColorRect/OverloadProgressBar"]
 unique_name_in_owner = true
 wait_time = 0.5
+
+[node name="OverloadReadySoundPlayer" type="AudioStreamPlayer2D" parent="UI/ColorRect/OverloadProgressBar"]
+unique_name_in_owner = true
+stream = ExtResource("5_vwoe6")
+volume_db = 20.0
 
 [node name="OverloadStatusLabel" type="Label" parent="UI/ColorRect"]
 unique_name_in_owner = true
@@ -181,6 +204,10 @@ offset_right = 46.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_outline_size = 35
 theme_override_font_sizes/font_size = 256
 text = "GAME OVER"
 
@@ -198,6 +225,8 @@ offset_right = 197.0
 offset_bottom = 357.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_q75dj")
 theme_override_styles/hover = SubResource("StyleBoxFlat_hx0oe")
@@ -212,10 +241,32 @@ script = ExtResource("4_hsskd")
 unique_name_in_owner = true
 position = Vector2(2.08165e-12, 2.08165e-12)
 
+[node name="InGameMusicPlayer" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+stream = ExtResource("7_feac5")
+script = ExtResource("8_48mrn")
+
+[node name="Timer" type="Timer" parent="InGameMusicPlayer"]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="GameOverMusicPlayer" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+visible = false
+stream = ExtResource("8_dah7a")
+
+[node name="DeathSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+volume_db = -2.0
+script = ExtResource("10_5i4uk")
+
 [connection signal="score_increased" from="." to="UI/ColorRect/OverloadProgressBar" method="_on_game_score_increased"]
 [connection signal="attempted_overload" from="Goku" to="UI/ColorRect/OverloadStatusLabel" method="_on_goku_attempted_overload"]
 [connection signal="has_overloaded" from="Goku" to="UI/ColorRect/OverloadProgressBar" method="_on_goku_has_overloaded"]
 [connection signal="has_overloaded" from="Goku" to="UI/ColorRect/OverloadStatusLabel" method="_on_goku_has_overloaded"]
+[connection signal="has_overloaded" from="Goku" to="InGameMusicPlayer" method="_on_goku_has_overloaded"]
 [connection signal="health_depleted" from="Goku" to="." method="_on_goku_health_depleted"]
 [connection signal="teleported" from="Goku" to="GameCamera" method="_on_goku_teleported"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
@@ -224,3 +275,4 @@ position = Vector2(2.08165e-12, 2.08165e-12)
 [connection signal="timeout" from="UI/ColorRect/OverloadProgressBar/PauseOverloadFillTimer" to="UI/ColorRect/OverloadProgressBar" method="_on_pause_score_timer_timeout"]
 [connection signal="timeout" from="UI/ColorRect/OverloadStatusLabel/ShowTimer" to="UI/ColorRect/OverloadStatusLabel" method="_on_show_timer_timeout"]
 [connection signal="pressed" from="GameOver/ColorRect/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="timeout" from="InGameMusicPlayer/Timer" to="InGameMusicPlayer" method="_on_timer_timeout"]

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://tuftdnaojmuh"
+path="res://.godot/imported/oof 6.wav-045569e48d9b2adcfee2416526330a33.sample"
+
+[deps]
+
+source_file="res://sound_effects/oof 6.wav"
+dest_files=["res://.godot/imported/oof 6.wav-045569e48d9b2adcfee2416526330a33.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d2pykm0ue61w7"
+path="res://.godot/imported/oof 17.wav-ea70515010d0b04c18e9533d07c275cd.sample"
+
+[deps]
+
+source_file="res://sound_effects/oof 17.wav"
+dest_files=["res://.godot/imported/oof 17.wav-ea70515010d0b04c18e9533d07c275cd.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
