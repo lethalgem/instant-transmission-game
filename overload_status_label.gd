@@ -56,7 +56,6 @@ func _on_goku_has_overloaded():
 
 
 func _on_goku_attempted_overload():
-	print("setting to true")
 	overload_ready = false
 	update_label()
 	fade = true
@@ -64,5 +63,4 @@ func _on_goku_attempted_overload():
 
 
 func _on_show_timer_timeout():
-	print("setting to false")
 	fade = false

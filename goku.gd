@@ -13,7 +13,6 @@ var can_overload = false
 
 func _ready():
 	%PlayerCharacter.play_idle_animation()
-	print(%TeleportPreventionCollision2D.get_path())
 
 
 func _physics_process(_delta):
@@ -45,6 +44,7 @@ func overload_attack():
 		if body.has_method("take_damage"):
 			body.take_damage()
 	can_overload = false
+	has_overloaded.emit()
 
 
 func _on_clicked_point_click_released(released_position):

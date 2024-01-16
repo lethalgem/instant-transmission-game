@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bsa61566j74xl"]
+[gd_scene load_steps=28 format=3 uid="uid://bsa61566j74xl"]
 
 [ext_resource type="Script" path="res://characters/player_character/player_character.gd" id="1_qc13c"]
 [ext_resource type="Texture2D" uid="uid://c3y6gdjnk0s6o" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 2/Character1M_2_punch_0.png" id="1_sl264"]
@@ -15,17 +15,15 @@
 [ext_resource type="Texture2D" uid="uid://hx6mdqedpuly" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 2/Character1M_2_death_6.png" id="13_r75qt"]
 [ext_resource type="Texture2D" uid="uid://dr4b5o3kdoxyg" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 2/Character1M_2_jump_0.png" id="14_pugvu"]
 [ext_resource type="Texture2D" uid="uid://dqqr0qxbj6j4l" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 2/Character1M_2_jump_1.png" id="15_t01ih"]
-[ext_resource type="Texture2D" uid="uid://lfpnkghglqdm" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 2/Character1M_2_use_00.png" id="16_ndoxw"]
-[ext_resource type="Texture2D" uid="uid://dw2xsj53knydf" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 2/Character1M_2_use_01.png" id="17_xnyqg"]
-[ext_resource type="Texture2D" uid="uid://c72huhgydps4v" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 2/Character1M_2_use_02.png" id="18_so86s"]
-[ext_resource type="Texture2D" uid="uid://ofwhk87xs4ir" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 2/Character1M_2_use_03.png" id="19_4cst1"]
-[ext_resource type="Texture2D" uid="uid://88r6vegmuy87" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 2/Character1M_2_use_04.png" id="20_4l1xa"]
-[ext_resource type="Texture2D" uid="uid://1xq0qfx76k25" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 2/Character1M_2_use_05.png" id="21_rk5jc"]
-[ext_resource type="Texture2D" uid="uid://bc87bmvurtl26" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 2/Character1M_2_use_06.png" id="22_k7puw"]
-[ext_resource type="Texture2D" uid="uid://ux2llfnnglpg" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 2/Character1M_2_use_07.png" id="23_u7vag"]
-[ext_resource type="Texture2D" uid="uid://dosl6vgfbe3s2" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 2/Character1M_2_use_08.png" id="24_kpecw"]
-[ext_resource type="Texture2D" uid="uid://c6spro6ddv5jw" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 2/Character1M_2_use_09.png" id="25_qbsit"]
+[ext_resource type="Texture2D" uid="uid://gcqok6mfiq3p" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 3/Character1M_3_use_03.png" id="17_tdb8a"]
+[ext_resource type="Texture2D" uid="uid://cdum6j26brcna" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 3/Character1M_3_use_04.png" id="21_tem2o"]
+[ext_resource type="Texture2D" uid="uid://c8v82n7bbqsoe" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 3/Character1M_3_use_05.png" id="22_a8tap"]
+[ext_resource type="Texture2D" uid="uid://cyqto7guqtw2x" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 3/Character1M_3_use_06.png" id="23_ch113"]
+[ext_resource type="Texture2D" uid="uid://bdbp5ekrcb5yi" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 3/Character1M_3_use_07.png" id="24_xrwsr"]
+[ext_resource type="Texture2D" uid="uid://b065micditeo1" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 3/Character1M_3_use_08.png" id="25_6glle"]
 [ext_resource type="Texture2D" uid="uid://du2n2i4yrk3np" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 2/Character1M_2_use_10.png" id="26_4cp1t"]
+[ext_resource type="Texture2D" uid="uid://co2a57wche3vx" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 3/Character1M_3_use_09.png" id="26_607th"]
+[ext_resource type="Texture2D" uid="uid://b54hv0hpif6c0" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 3/Character1M_3_use_10.png" id="27_fdxec"]
 [ext_resource type="Texture2D" uid="uid://denqto2p4iqg2" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 2/Character1M_2_damage_1.png" id="29_kfdy3"]
 [ext_resource type="Texture2D" uid="uid://b1rj6ouvv6cxc" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 2/Character1M_2_damage_0.png" id="30_ucere"]
 
@@ -98,37 +96,34 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("16_ndoxw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_xnyqg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_so86s")
-}, {
-"duration": 1.0,
-"texture": ExtResource("19_4cst1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("20_4l1xa")
-}, {
-"duration": 1.0,
-"texture": ExtResource("21_rk5jc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("22_k7puw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("23_u7vag")
-}, {
-"duration": 1.0,
-"texture": ExtResource("24_kpecw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("25_qbsit")
-}, {
-"duration": 1.0,
 "texture": ExtResource("26_4cp1t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_tdb8a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_tdb8a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_tem2o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_a8tap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_ch113")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_xrwsr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_6glle")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_607th")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_fdxec")
 }],
 "loop": false,
 "name": &"overload",
@@ -165,7 +160,7 @@ unique_name_in_owner = true
 position = Vector2(2.08165e-12, 2.08165e-12)
 sprite_frames = SubResource("SpriteFrames_w5k17")
 animation = &"overload"
-frame = 10
+frame = 9
 frame_progress = 1.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

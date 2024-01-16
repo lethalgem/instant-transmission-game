@@ -44,7 +44,7 @@ shape = SubResource("RectangleShape2D_m5me8")
 
 [node name="AttackTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 0.3
+wait_time = 0.2
 one_shot = true
 
 [node name="OverloadAttackArea" type="Area2D" parent="."]

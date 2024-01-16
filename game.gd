@@ -4,7 +4,7 @@ signal score_increased
 
 var score = 0
 var current_enemy_count = 0
-
+var can_score = false
 
 func _on_goku_health_depleted():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -24,7 +24,6 @@ func spawn_enemy():
 func _on_spawn_timer_timeout():
 	if current_enemy_count < score + 1:
 		spawn_enemy()
-		pass
 
 
 func _on_enemy_health_depleted():

@@ -575,6 +575,10 @@ step = 1.0
 show_percentage = false
 script = ExtResource("11_qkw2n")
 
+[node name="PauseOverloadFillTimer" type="Timer" parent="UI/ColorRect/OverloadProgressBar"]
+unique_name_in_owner = true
+wait_time = 0.5
+
 [node name="OverloadStatusLabel" type="Label" parent="UI/ColorRect"]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0)
@@ -667,5 +671,6 @@ position = Vector2(2.08165e-12, 2.08165e-12)
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="progress_bar_full" from="UI/ColorRect/OverloadProgressBar" to="Goku" method="_on_overload_progress_bar_progress_bar_full"]
 [connection signal="progress_bar_full" from="UI/ColorRect/OverloadProgressBar" to="UI/ColorRect/OverloadStatusLabel" method="_on_overload_progress_bar_progress_bar_full"]
+[connection signal="timeout" from="UI/ColorRect/OverloadProgressBar/PauseOverloadFillTimer" to="UI/ColorRect/OverloadProgressBar" method="_on_pause_score_timer_timeout"]
 [connection signal="timeout" from="UI/ColorRect/OverloadStatusLabel/ShowTimer" to="UI/ColorRect/OverloadStatusLabel" method="_on_show_timer_timeout"]
 [connection signal="pressed" from="GameOver/ColorRect/RestartButton" to="." method="_on_restart_button_pressed"]
