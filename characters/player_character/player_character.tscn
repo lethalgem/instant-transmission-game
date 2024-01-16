@@ -159,8 +159,6 @@ script = ExtResource("1_qc13c")
 unique_name_in_owner = true
 position = Vector2(2.08165e-12, 2.08165e-12)
 sprite_frames = SubResource("SpriteFrames_w5k17")
-animation = &"overload"
-frame = 9
-frame_progress = 1.0
+animation = &"teleport_begin"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

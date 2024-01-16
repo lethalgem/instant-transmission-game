@@ -1,0 +1,282 @@
+[gd_scene load_steps=29 format=3 uid="uid://cschu6chdkl6i"]
+
+[ext_resource type="Script" path="res://controls.gd" id="1_78uk8"]
+[ext_resource type="Texture2D" uid="uid://denqto2p4iqg2" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 2/Character1M_2_damage_1.png" id="1_fft3h"]
+[ext_resource type="Texture2D" uid="uid://c54jq06be77rm" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 2/Character1M_2_punch_3.png" id="1_tio58"]
+[ext_resource type="Texture2D" uid="uid://ch5w6tnppmiep" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 2/Character1M_2_punch_4.png" id="2_8pw35"]
+[ext_resource type="Texture2D" uid="uid://b1rj6ouvv6cxc" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 2/Character1M_2_damage_0.png" id="2_oqqof"]
+[ext_resource type="Texture2D" uid="uid://c3y6gdjnk0s6o" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 2/Character1M_2_punch_0.png" id="3_nmlxf"]
+[ext_resource type="Texture2D" uid="uid://3h2yy2b3b14i" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 2/Character1M_2_punch_1.png" id="4_wd20u"]
+[ext_resource type="Texture2D" uid="uid://bxg7sh2fwbg1t" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 2/Character1M_2_punch_2.png" id="5_gfyc1"]
+[ext_resource type="Texture2D" uid="uid://dvawwvhl7d30g" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 3/Character1M_3_use_00.png" id="6_buv02"]
+[ext_resource type="Texture2D" uid="uid://bwo7aybt3orx0" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 3/Character1M_3_use_01.png" id="7_te4it"]
+[ext_resource type="Texture2D" uid="uid://dp81bcdrfsh56" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 3/Character1M_3_use_02.png" id="8_j0a7o"]
+[ext_resource type="Texture2D" uid="uid://gcqok6mfiq3p" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 3/Character1M_3_use_03.png" id="9_dl1m1"]
+[ext_resource type="Texture2D" uid="uid://cdum6j26brcna" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 3/Character1M_3_use_04.png" id="10_r4upq"]
+[ext_resource type="Texture2D" uid="uid://c8v82n7bbqsoe" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 3/Character1M_3_use_05.png" id="11_y6e2q"]
+[ext_resource type="Texture2D" uid="uid://cyqto7guqtw2x" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 3/Character1M_3_use_06.png" id="12_m5yam"]
+[ext_resource type="Texture2D" uid="uid://bdbp5ekrcb5yi" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 3/Character1M_3_use_07.png" id="13_jqvo1"]
+[ext_resource type="Texture2D" uid="uid://b065micditeo1" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 3/Character1M_3_use_08.png" id="14_7geuy"]
+[ext_resource type="Texture2D" uid="uid://co2a57wche3vx" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 3/Character1M_3_use_09.png" id="15_y820s"]
+[ext_resource type="Texture2D" uid="uid://b54hv0hpif6c0" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 3/Character1M_3_use_10.png" id="16_v23mm"]
+[ext_resource type="Texture2D" uid="uid://byt5wug81w6a7" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 3/Character1M_3_use_11.png" id="17_wdlil"]
+[ext_resource type="Texture2D" uid="uid://dj6yhoak6og0l" path="res://character_animations/Exported PNGs/Male/Character 1/Clothes 3/Character1M_3_use_12.png" id="18_k1u0a"]
+[ext_resource type="Script" path="res://teleport_tutorial_character.gd" id="21_pi76s"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_erlbq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tio58")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_8pw35")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_nmlxf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_nmlxf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_nmlxf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wd20u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_gfyc1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wd20u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_gfyc1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wd20u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_gfyc1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_buv02")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_te4it")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_j0a7o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_dl1m1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_r4upq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_y6e2q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_m5yam")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_jqvo1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_7geuy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_y820s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_v23mm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_wdlil")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_k1u0a")
+}],
+"loop": true,
+"name": &"overload",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fft3h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_oqqof")
+}],
+"loop": false,
+"name": &"teleport_begin",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_oqqof")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_fft3h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_fft3h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_fft3h")
+}],
+"loop": false,
+"name": &"teleport_end",
+"speed": 10.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2e3wc"]
+bg_color = Color(1, 0.835294, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x66cj"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2llm"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_olmqc"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wfpyg"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Controls" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_78uk8")
+
+[node name="TeleportTutorialCharacter" type="AnimatedSprite2D" parent="."]
+position = Vector2(359, 285)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_erlbq")
+animation = &"teleport_end"
+script = ExtResource("21_pi76s")
+
+[node name="TeleportTutorialTimer" type="Timer" parent="TeleportTutorialCharacter"]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 2
+offset_left = 106.0
+offset_top = 492.0
+offset_right = 718.0
+offset_bottom = 871.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_outline_size = 20
+theme_override_font_sizes/normal_font_size = 50
+text = "CLICK anywhere to TELEPORT"
+scroll_active = false
+
+[node name="Attack" type="AnimatedSprite2D" parent="."]
+position = Vector2(900, 641)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_erlbq")
+autoplay = "default"
+frame = 1
+frame_progress = 0.196385
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+layout_mode = 2
+offset_left = 719.0
+offset_top = 848.0
+offset_right = 1331.0
+offset_bottom = 1227.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_outline_size = 20
+theme_override_font_sizes/normal_font_size = 50
+text = "Press SPACE to ATTACK"
+scroll_active = false
+
+[node name="Overload" type="AnimatedSprite2D" parent="."]
+position = Vector2(1567, 265)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_erlbq")
+animation = &"overload"
+autoplay = "overload"
+frame = 4
+frame_progress = 0.962645
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+layout_mode = 2
+offset_left = 1286.0
+offset_top = 508.0
+offset_right = 1898.0
+offset_bottom = 887.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_outline_size = 20
+theme_override_font_sizes/normal_font_size = 50
+text = "Press F to OVERLOAD when the bar is full"
+scroll_active = false
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+modulate = Color(1, 1, 1, 0.6)
+layout_mode = 0
+offset_left = 1377.0
+offset_top = 453.0
+offset_right = 1765.0
+offset_bottom = 476.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_2e3wc")
+max_value = 12.0
+value = 12.0
+show_percentage = false
+
+[node name="ExitButton" type="Button" parent="."]
+offset_left = 37.0
+offset_top = 993.0
+offset_right = 174.0
+offset_bottom = 1051.0
+focus_neighbor_bottom = NodePath("../StartButton")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.0235294, 0.113725, 0.329412, 1)
+theme_override_colors/font_hover_color = Color(0, 0.478431, 0.764706, 1)
+theme_override_colors/font_focus_color = Color(0.0627451, 0.698039, 0.937255, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_x66cj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_n2llm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_olmqc")
+theme_override_styles/focus = SubResource("StyleBoxFlat_wfpyg")
+text = "Back"
+alignment = 0
+
+[connection signal="timeout" from="TeleportTutorialCharacter/TeleportTutorialTimer" to="TeleportTutorialCharacter" method="_on_teleport_tutorial_timer_timeout"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

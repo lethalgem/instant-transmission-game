@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://e5vjwsoynvt8"]
+[gd_scene load_steps=17 format=3 uid="uid://e5vjwsoynvt8"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_cwqqt"]
 [ext_resource type="PackedScene" uid="uid://ba1uokapt5k7a" path="res://mountain_parallax_background.tscn" id="2_coep6"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://menu_music_player.gd" id="5_ppv8g"]
 [ext_resource type="Script" path="res://menu_sound_effects_player.gd" id="7_71o5o"]
 [ext_resource type="AudioStream" uid="uid://vvdy61rvi2o1" path="res://sound_effects/African4.mp3" id="7_85wt0"]
+[ext_resource type="PackedScene" uid="uid://cschu6chdkl6i" path="res://controls.tscn" id="11_ulh05"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6owak"]
 animations = [{
@@ -54,23 +55,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cwqqt")
 
-[node name="Character" type="CanvasLayer" parent="."]
-layer = -1
-
-[node name="menu_character" type="AnimatedSprite2D" parent="Character"]
-position = Vector2(1260, 847)
-scale = Vector2(20, 20)
-sprite_frames = SubResource("SpriteFrames_6owak")
-autoplay = "default"
-frame_progress = 0.87453
-flip_h = true
-script = ExtResource("4_do3cn")
-
-[node name="HoverTimer" type="Timer" parent="Character/menu_character"]
-unique_name_in_owner = true
-wait_time = 10.0
-autostart = true
-
 [node name="Overlay" type="CanvasLayer" parent="."]
 layer = -1
 follow_viewport_enabled = true
@@ -92,19 +76,43 @@ color = Color(0.152941, 0.168627, 0.188235, 0.505882)
 
 [node name="MountainParallaxBackground" parent="." instance=ExtResource("2_coep6")]
 
-[node name="TitleVBoxContainer" type="VBoxContainer" parent="."]
+[node name="TopLevelMenu" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Character" type="CanvasLayer" parent="TopLevelMenu"]
+unique_name_in_owner = true
+layer = -1
+
+[node name="menu_character" type="AnimatedSprite2D" parent="TopLevelMenu/Character"]
+position = Vector2(1260, 847)
+scale = Vector2(20, 20)
+sprite_frames = SubResource("SpriteFrames_6owak")
+autoplay = "default"
+frame_progress = 0.87453
+flip_h = true
+script = ExtResource("4_do3cn")
+
+[node name="HoverTimer" type="Timer" parent="TopLevelMenu/Character/menu_character"]
+unique_name_in_owner = true
+wait_time = 10.0
+autostart = true
+
+[node name="TitleVBoxContainer" type="VBoxContainer" parent="TopLevelMenu"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -766.5
+offset_left = 173.5
 offset_top = 133.0
-offset_right = 771.5
+offset_right = 1711.5
 offset_bottom = 458.0
 grow_horizontal = 2
 theme_override_constants/separation = -20
 
-[node name="Header" type="Label" parent="TitleVBoxContainer"]
+[node name="Header" type="Label" parent="TopLevelMenu/TitleVBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
@@ -114,7 +122,7 @@ theme_override_font_sizes/font_size = 25
 text = "Lethalgem Presents:"
 horizontal_alignment = 2
 
-[node name="Title" type="Label" parent="TitleVBoxContainer"]
+[node name="Title" type="Label" parent="TopLevelMenu/TitleVBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 5
@@ -124,19 +132,19 @@ theme_override_font_sizes/font_size = 250
 text = "JUMP SHOT"
 horizontal_alignment = 1
 
-[node name="MenuButtonsVBoxContainer" type="VBoxContainer" parent="."]
+[node name="MenuButtonsVBoxContainer" type="VBoxContainer" parent="TopLevelMenu"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 108.0
-offset_top = -377.0
+offset_top = 663.0
 offset_right = 418.0
-offset_bottom = -97.0
+offset_bottom = 943.0
 grow_vertical = 0
 theme_override_constants/separation = 16
 
-[node name="StartButton" type="Button" parent="MenuButtonsVBoxContainer"]
+[node name="StartButton" type="Button" parent="TopLevelMenu/MenuButtonsVBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../QuitButton")
@@ -154,7 +162,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_7rjl3")
 text = "Start"
 alignment = 0
 
-[node name="ControlsButton" type="Button" parent="MenuButtonsVBoxContainer"]
+[node name="ControlsButton" type="Button" parent="TopLevelMenu/MenuButtonsVBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0.0235294, 0.113725, 0.329412, 1)
@@ -170,7 +178,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_7rjl3")
 text = "Controls"
 alignment = 0
 
-[node name="FullscreenButton" type="Button" parent="MenuButtonsVBoxContainer"]
+[node name="FullscreenButton" type="Button" parent="TopLevelMenu/MenuButtonsVBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -187,7 +195,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_7rjl3")
 text = "Fullscreen"
 alignment = 0
 
-[node name="QuitButton" type="Button" parent="MenuButtonsVBoxContainer"]
+[node name="QuitButton" type="Button" parent="TopLevelMenu/MenuButtonsVBoxContainer"]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../StartButton")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -204,20 +212,20 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_7rjl3")
 text = "Quit"
 alignment = 0
 
-[node name="MenuCamera" type="Camera2D" parent="."]
+[node name="MenuCamera" type="Camera2D" parent="TopLevelMenu"]
 offset = Vector2(960, 540)
 script = ExtResource("3_wntey")
 
-[node name="ShakeTimer" type="Timer" parent="MenuCamera"]
+[node name="ShakeTimer" type="Timer" parent="TopLevelMenu/MenuCamera"]
 unique_name_in_owner = true
 wait_time = 10.0
 autostart = true
 
-[node name="CenterOfScreenMarker" type="Marker2D" parent="MenuCamera"]
+[node name="CenterOfScreenMarker" type="Marker2D" parent="TopLevelMenu/MenuCamera"]
 unique_name_in_owner = true
 position = Vector2(960, 540)
 
-[node name="MenuSoundEffectsPlayer" type="AudioStreamPlayer2D" parent="."]
+[node name="MenuSoundEffectsPlayer" type="AudioStreamPlayer2D" parent="TopLevelMenu"]
 stream = ExtResource("7_85wt0")
 script = ExtResource("7_71o5o")
 
@@ -226,12 +234,19 @@ stream = ExtResource("4_v8ori")
 volume_db = -30.0
 script = ExtResource("5_ppv8g")
 
-[connection signal="timeout" from="Character/menu_character/HoverTimer" to="Character/menu_character" method="_on_float_timer_timeout"]
-[connection signal="pressed" from="MenuButtonsVBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="MenuButtonsVBoxContainer/StartButton" to="MenuSoundEffectsPlayer" method="_on_start_button_pressed"]
-[connection signal="pressed" from="MenuButtonsVBoxContainer/ControlsButton" to="MenuSoundEffectsPlayer" method="_on_controls_button_pressed"]
-[connection signal="pressed" from="MenuButtonsVBoxContainer/FullscreenButton" to="." method="_on_fullscreen_button_pressed"]
-[connection signal="pressed" from="MenuButtonsVBoxContainer/FullscreenButton" to="MenuSoundEffectsPlayer" method="_on_fullscreen_button_pressed"]
-[connection signal="pressed" from="MenuButtonsVBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="MenuButtonsVBoxContainer/QuitButton" to="MenuSoundEffectsPlayer" method="_on_quit_button_pressed"]
-[connection signal="timeout" from="MenuCamera/ShakeTimer" to="MenuCamera" method="_on_shake_timer_timeout"]
+[node name="Controls" parent="." instance=ExtResource("11_ulh05")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[connection signal="timeout" from="TopLevelMenu/Character/menu_character/HoverTimer" to="TopLevelMenu/Character/menu_character" method="_on_float_timer_timeout"]
+[connection signal="pressed" from="TopLevelMenu/MenuButtonsVBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="TopLevelMenu/MenuButtonsVBoxContainer/StartButton" to="TopLevelMenu/MenuSoundEffectsPlayer" method="_on_start_button_pressed"]
+[connection signal="pressed" from="TopLevelMenu/MenuButtonsVBoxContainer/ControlsButton" to="." method="_on_controls_button_pressed"]
+[connection signal="pressed" from="TopLevelMenu/MenuButtonsVBoxContainer/ControlsButton" to="TopLevelMenu/MenuSoundEffectsPlayer" method="_on_controls_button_pressed"]
+[connection signal="pressed" from="TopLevelMenu/MenuButtonsVBoxContainer/FullscreenButton" to="." method="_on_fullscreen_button_pressed"]
+[connection signal="pressed" from="TopLevelMenu/MenuButtonsVBoxContainer/FullscreenButton" to="TopLevelMenu/MenuSoundEffectsPlayer" method="_on_fullscreen_button_pressed"]
+[connection signal="pressed" from="TopLevelMenu/MenuButtonsVBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="TopLevelMenu/MenuButtonsVBoxContainer/QuitButton" to="TopLevelMenu/MenuSoundEffectsPlayer" method="_on_quit_button_pressed"]
+[connection signal="timeout" from="TopLevelMenu/MenuCamera/ShakeTimer" to="TopLevelMenu/MenuCamera" method="_on_shake_timer_timeout"]
+[connection signal="exit_pressed" from="Controls" to="." method="_on_controls_exit_pressed"]

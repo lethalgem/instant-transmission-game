@@ -21,3 +21,15 @@ func _on_fullscreen_button_pressed():
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		%FullscreenButton.text = "Fullscreen"
+
+
+func _on_controls_button_pressed():
+	%TopLevelMenu.hide()
+	%Character.hide()
+	%Controls.show()
+
+
+func _on_controls_exit_pressed():
+	%TopLevelMenu.show()
+	%Character.show()
+	%Controls.hide()
