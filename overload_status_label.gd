@@ -1,7 +1,7 @@
 extends Label
 
 var overload_ready = false
-var speed = 3
+var speed = 4
 var time = 0
 var sinTime = 0
 var _visible = false

@@ -517,7 +517,7 @@ color = Color(0.207843, 0.501961, 0.580392, 1)
 position = Vector2(712, 560)
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 0.75
+wait_time = 0.85
 autostart = true
 
 [node name="Path2D" type="Path2D" parent="."]
@@ -570,7 +570,7 @@ theme_override_colors/font_color = Color(0.152941, 0.168627, 0.188235, 1)
 theme_override_font_sizes/font_size = 25
 theme_override_styles/background = SubResource("StyleBoxFlat_3jihk")
 theme_override_styles/fill = SubResource("StyleBoxFlat_m2b5p")
-max_value = 3.0
+max_value = 12.0
 step = 1.0
 show_percentage = false
 script = ExtResource("11_qkw2n")
