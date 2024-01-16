@@ -1,6 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://e5vjwsoynvt8"]
+[gd_scene load_steps=10 format=3 uid="uid://e5vjwsoynvt8"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_cwqqt"]
+[ext_resource type="PackedScene" uid="uid://ba1uokapt5k7a" path="res://mountain_parallax_background.tscn" id="2_coep6"]
+[ext_resource type="Script" path="res://menu_camera.gd" id="3_wntey"]
+[ext_resource type="AudioStream" uid="uid://d1x6t3ak3b4me" path="res://music/mr-sakamoto-185217.mp3" id="4_v8ori"]
+[ext_resource type="Script" path="res://menu_music_player.gd" id="5_ppv8g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lubke"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d6vxi"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_grnul"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7rjl3"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -11,31 +35,156 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cwqqt")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Overlay" type="CanvasLayer" parent="."]
+layer = -1
+follow_viewport_enabled = true
+
+[node name="ColorRect" type="ColorRect" parent="Overlay"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -996.0
+offset_top = -564.0
+offset_right = 988.0
+offset_bottom = 564.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.152941, 0.168627, 0.188235, 0.505882)
+
+[node name="MountainParallaxBackground" parent="." instance=ExtResource("2_coep6")]
+
+[node name="TitleVBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -766.5
+offset_top = 133.0
+offset_right = 771.5
+offset_bottom = 458.0
+grow_horizontal = 2
+theme_override_constants/separation = -20
+
+[node name="Header" type="Label" parent="TitleVBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 25
+text = "Lethalgem Presents:"
+horizontal_alignment = 2
+
+[node name="Title" type="Label" parent="TitleVBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 15
+theme_override_constants/shadow_outline_size = 19
+theme_override_font_sizes/font_size = 250
+text = "JUMP SHOT"
+horizontal_alignment = 1
+
+[node name="MenuButtonsVBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -137.0
-offset_right = 87.0
-offset_bottom = -1.0
+offset_left = 108.0
+offset_top = -377.0
+offset_right = 418.0
+offset_bottom = -97.0
 grow_vertical = 0
+theme_override_constants/separation = 16
 
-[node name="StartButton" type="Button" parent="VBoxContainer"]
+[node name="StartButton" type="Button" parent="MenuButtonsVBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_top = NodePath("../QuitButton")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.0235294, 0.113725, 0.329412, 1)
+theme_override_colors/font_hover_color = Color(0, 0.478431, 0.764706, 1)
+theme_override_colors/font_focus_color = Color(0.0627451, 0.698039, 0.937255, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_lubke")
+theme_override_styles/hover = SubResource("StyleBoxFlat_d6vxi")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_grnul")
+theme_override_styles/focus = SubResource("StyleBoxFlat_7rjl3")
 text = "Start"
+alignment = 0
 
-[node name="ControlsButton" type="Button" parent="VBoxContainer"]
+[node name="ControlsButton" type="Button" parent="MenuButtonsVBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.0235294, 0.113725, 0.329412, 1)
+theme_override_colors/font_hover_color = Color(0, 0.478431, 0.764706, 1)
+theme_override_colors/font_focus_color = Color(0.0627451, 0.698039, 0.937255, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_lubke")
+theme_override_styles/hover = SubResource("StyleBoxFlat_d6vxi")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_grnul")
+theme_override_styles/focus = SubResource("StyleBoxFlat_7rjl3")
 text = "Controls"
+alignment = 0
 
-[node name="FullscreenButton" type="Button" parent="VBoxContainer"]
+[node name="FullscreenButton" type="Button" parent="MenuButtonsVBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.0235294, 0.113725, 0.329412, 1)
+theme_override_colors/font_hover_color = Color(0, 0.478431, 0.764706, 1)
+theme_override_colors/font_focus_color = Color(0.0627451, 0.698039, 0.937255, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_lubke")
+theme_override_styles/hover = SubResource("StyleBoxFlat_d6vxi")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_grnul")
+theme_override_styles/focus = SubResource("StyleBoxFlat_7rjl3")
 text = "Fullscreen"
+alignment = 0
 
-[node name="QuitButton" type="Button" parent="VBoxContainer"]
+[node name="QuitButton" type="Button" parent="MenuButtonsVBoxContainer"]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../StartButton")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.0235294, 0.113725, 0.329412, 1)
+theme_override_colors/font_hover_color = Color(0, 0.478431, 0.764706, 1)
+theme_override_colors/font_focus_color = Color(0.0627451, 0.698039, 0.937255, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_lubke")
+theme_override_styles/hover = SubResource("StyleBoxFlat_d6vxi")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_grnul")
+theme_override_styles/focus = SubResource("StyleBoxFlat_7rjl3")
 text = "Quit"
+alignment = 0
 
-[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[node name="MenuCamera" type="Camera2D" parent="."]
+offset = Vector2(960, 540)
+script = ExtResource("3_wntey")
+
+[node name="ShakeTimer" type="Timer" parent="MenuCamera"]
+unique_name_in_owner = true
+wait_time = 10.0
+autostart = true
+
+[node name="CenterOfScreenMarker" type="Marker2D" parent="MenuCamera"]
+unique_name_in_owner = true
+position = Vector2(960, 540)
+
+[node name="MenuMusicPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_v8ori")
+volume_db = -30.0
+script = ExtResource("5_ppv8g")
+
+[connection signal="pressed" from="MenuButtonsVBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MenuButtonsVBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="timeout" from="MenuCamera/ShakeTimer" to="MenuCamera" method="_on_shake_timer_timeout"]

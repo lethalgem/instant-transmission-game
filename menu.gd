@@ -2,7 +2,8 @@ extends Control
 
 
 func _ready():
-	$VBoxContainer/StartButton.grab_focus()
+	%StartButton.grab_focus()
+	Input.set_custom_mouse_cursor(preload("res://cursors/menu_cursor.png"))
 
 
 func _on_start_button_pressed():

@@ -6,6 +6,12 @@ var score = 0
 var current_enemy_count = 0
 var can_score = false
 
+var in_game_cursor = preload("res://cursors/in_game_cursor.png")
+
+
+func _ready():
+	Input.set_custom_mouse_cursor(in_game_cursor)
+
 
 func _on_goku_health_depleted():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -36,6 +42,6 @@ func _on_enemy_health_depleted():
 
 
 func _on_restart_button_pressed():
-	Input.set_custom_mouse_cursor(preload("res://cursors/in_game_cursor.png"))
+	Input.set_custom_mouse_cursor(in_game_cursor)
 	get_tree().paused = false
 	get_tree().reload_current_scene()
