@@ -250,3 +250,4 @@ layout_mode = 1
 [connection signal="pressed" from="TopLevelMenu/MenuButtonsVBoxContainer/QuitButton" to="TopLevelMenu/MenuSoundEffectsPlayer" method="_on_quit_button_pressed"]
 [connection signal="timeout" from="TopLevelMenu/MenuCamera/ShakeTimer" to="TopLevelMenu/MenuCamera" method="_on_shake_timer_timeout"]
 [connection signal="exit_pressed" from="Controls" to="." method="_on_controls_exit_pressed"]
+[connection signal="exit_pressed" from="Controls" to="TopLevelMenu/MenuSoundEffectsPlayer" method="_on_controls_exit_pressed"]

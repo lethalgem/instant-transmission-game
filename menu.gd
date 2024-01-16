@@ -27,9 +27,11 @@ func _on_controls_button_pressed():
 	%TopLevelMenu.hide()
 	%Character.hide()
 	%Controls.show()
+	%Controls.get_focus()
 
 
 func _on_controls_exit_pressed():
 	%TopLevelMenu.show()
 	%Character.show()
 	%Controls.hide()
+	%StartButton.grab_focus()
