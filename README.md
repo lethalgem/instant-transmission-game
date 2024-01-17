@@ -16,31 +16,31 @@ Arcade-Style Tactical Shooter
 
 ### Jump into the Sky, Shoot with Precision!
 
-Welcome to "Jump Shot," an exhilarating pixel art adventure where the sky is your battlefield, and precision is your greatest weapon. Developed with the Godot engine for the Godot Wild Jam #65, this game marks significant first step in my indie game development journey, blending simplicity with intense action.
+Welcome to "Jump Shot," an exhilarating pixel art adventure where the sky is your battlefield, and precision is your greatest weapon. Developed with the Godot engine for the Godot Wild Jam #65, this game marks significant first step in my indie game development journey, blending simplicity with intense action. <br />
 
 ### A World Above the Clouds
 
-Set against a serene backdrop of distant mountains and an endless sky, "Jump Shot" transports players to a realm high above the clouds. The game's static viewport focuses the action in a singular, vibrant arena, where every move counts.
+Set against a serene backdrop of distant mountains and an endless sky, "Jump Shot" transports players to a realm high above the clouds. The game's static viewport focuses the action in a singular, vibrant arena, where every move counts. <br />
 
 ### Innovative Gameplay Mechanics
 
-In "Jump Shot," players embody a character armed with the ability to teleport and unleash powerful energy beams. Your goal? Achieve the highest score by outmaneuvering and outlasting your foes. Each enemy vanquished brings you closer to unleashing the ultimate move: the Overload. This special ability clears the screen of enemies, giving you a moment of respite in this high-stakes sky battle.
+In "Jump Shot," players embody a character armed with the ability to teleport and unleash powerful energy beams. Your goal? Achieve the highest score by outmaneuvering and outlasting your foes. Each enemy vanquished brings you closer to unleashing the ultimate move: the Overload. This special ability clears the screen of enemies, giving you a moment of respite in this high-stakes sky battle. <br />
 
 ### Controls
 
 - **Left Click**: Teleport to your cursor's location.
 - **Space Bar**: Fire an energy beam towards your cursor.
-- **F Key**: Activate Overload when your meter is full.
+- **F Key**: Activate Overload when your meter is full. <br />
 
 ### Dynamic Challenge
 
-The game starts simple, with a single adversary. But don't let your guard down - as you defeat each enemy, more will teleport in to challenge you. One hit from a beam spells defeat, so agility and strategic positioning are key.
+The game starts simple, with a single adversary. But don't let your guard down - as you defeat each enemy, more will teleport in to challenge you. One hit from a beam spells defeat, so agility and strategic positioning are key. <br />
 
 ### Are You Ready to Conquer the Skies?
 
 "Jump Shot" isn't just a test of reflexes; it's a dance of strategy, precision, and timing. Can you outwit and outlast your enemies to claim the highest score? The sky is your arena, and victory is only a teleport away. Whether you're seeking a quick thrill or aiming to climb the leaderboards, "Jump Shot" offers a unique and captivating experience.
 
-Join the battle above the clouds and master the art of teleportation and precision shooting. With each enemy defeated, the challenge intensifies, pushing your skills to their limits. Are you ready to take on the ultimate sky-high adventure? Play "Jump Shot" now and carve your name in the annals of high scorers!
+Join the battle above the clouds and master the art of teleportation and precision shooting. With each enemy defeated, the challenge intensifies, pushing your skills to their limits. Are you ready to take on the ultimate sky-high adventure? Play "Jump Shot" now and carve your name in the annals of high scorers! <br />
 
 ## Why Play Jump Shot?
 
