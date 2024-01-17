@@ -81,6 +81,7 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/bg_color=Color(0.0784314, 0.133333, 0.25098, 1)
 boot_splash/image="res://GWJ-Full-Logo-tag-Orange2.png"
 config/icon="res://game_icon.png"
+boot_splash/minimum_display_time=3000
 
 [autoload]
 
@@ -146,3 +147,7 @@ overload={
 [layer_names]
 
 3d_physics/layer_2="player"
+
+[rendering]
+
+textures/vram_compression/import_s3tc_bptc=true
