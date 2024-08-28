@@ -51,3 +51,24 @@ Join the battle above the clouds and master the art of teleportation and precisi
 - A testament to creativity and skill, born from the Godot Wild Jam #65 theme of "overload."
 
 Embark on your journey through the clouds with "Jump Shot" – where each leap is a step towards mastery, and every shot counts!
+
+## Results
+| Criteria      | Rank | Score* | Raw Score |
+|---------------|------|--------|-----------|
+| Accessibility | #3   | 3.455  | 3.455     |
+| Audio         | #8   | 3.727  | 3.727     |
+| Originality   | #12  | 4.045  | 4.045     |
+| Fun           | #17  | 3.500  | 3.500     |
+| Overall       | #18  | 3.532  | 3.532     |
+| Controls      | #26  | 3.364  | 3.364     |
+| Theme         | #44  | 3.455  | 3.455     |
+| Graphics      | #74  | 3.182  | 3.182     |
+
+Rating Distribution
+| Rating  | Percentage |
+|---------|------------|
+| 5 star  | 18.2%      |
+| 4 star  | 34.4%      |
+| 3 star  | 33.1%      |
+| 2 star  | 11%        |
+| 1 star  | 3.2%       |
